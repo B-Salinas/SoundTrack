@@ -26,6 +26,9 @@ _SoundTrack_ is inspired by [SoundCloud](https://soundcloud.com/discover) and al
 - [sequelize](https://www.npmjs.com/package/sequelize) / [sequelize-cli](https://www.npmjs.com/package/sequelize-cli)
 - **ANYTHING ELSE THAT WAS IMPORTED IN AUTH ME PROJECT** 
 
+#### React Components
+#### Redux Store Tree
+
 # Features
 - User authentication is handled using bcryptjs library for password hashing.
 - Grants access to features like uploading and deleting songs to authorized users only.
