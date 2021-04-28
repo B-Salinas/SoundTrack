@@ -1,10 +1,10 @@
 // frontend/src/components/LoginFormPage/index.js
 import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
+import * as sessionActions from '../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import './LoginForm.css';
+import './stylesheets/LoginForm.css';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
