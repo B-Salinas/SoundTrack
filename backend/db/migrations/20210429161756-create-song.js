@@ -20,7 +20,6 @@ module.exports = {
       img_url: {
         type: Sequelize.STRING,
         allowNull: false,
-        references: { model: 'Albums' },
       },
       audio_url: {
         type: Sequelize.STRING,
