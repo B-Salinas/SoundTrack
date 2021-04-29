@@ -8,6 +8,7 @@ import SignupForm from "./components/SignupForm";
 
 import Navigation from "./components/Navigation";
 import Discover from './components/Discover';
+import Test from './components/Test';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,7 +30,10 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupForm />
-          </Route>
+          </Route> 
+          <Route exact path='/test'>
+            <Test />
+          </Route> 
         </Switch>
       )}
     </>
