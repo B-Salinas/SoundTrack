@@ -25,6 +25,10 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256]
       },
     },
+    profilePic: {
+      type: DataTypes.STRING(255),
+      allowNull: false
+    },
     hashedPassword: { 
       type: DataTypes.STRING.BINARY,
       allowNull: false,
@@ -90,7 +94,10 @@ module.exports = (sequelize, DataTypes) => {
   };
   
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Album, { foreignKey: 'user_id' });
+    User.hasMany(models.Like, { foreignKey: 'user_id' });
+    User.hasMany(models.Comment, { foreignKey: 'user_id' });
+    User.hasMany(models.Follow, { foreignKey: 'user_id' });
   };
 
   return User;
