@@ -31,6 +31,7 @@
 
 .nav-title {
   grid-column: 3 / 4;
+  text-decoration: none;
 }
 
 .nav-auth-links {
