@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -31,7 +32,12 @@ function Navigation({ isLoaded }) {
     //     {isLoaded && sessionLinks}
     //   </li>
     // </ul>
-    // // <Navbar />
+    
+
+    // <>
+    //   <Navbar />
+    //   <Footer />
+    // </>
   );
 }
 

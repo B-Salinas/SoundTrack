@@ -2,6 +2,8 @@ import './stylesheets/Discover.css';
 import Navbar from './Navbar';
 import { NavLink } from 'react-router-dom';
 
+import Footer from './Footer';
+
 function Discover() {
   return (
     <>
@@ -62,6 +64,7 @@ function Discover() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
