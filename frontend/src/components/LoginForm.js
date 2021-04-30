@@ -27,6 +27,19 @@ function LoginFormPage() {
       });
   }
 
+  const demoSubmit = (e) => {
+    e.preventDefault();
+    const credential = 'Demo-lition';
+    const password = 'password';
+
+    return dispatch(sessionActions.login({ credential, password })).catch(
+      async (res) => {
+        const data = await res.json();
+      }
+    );
+  };
+
+
   return (
     <form onSubmit={handleSubmit}>
       <ul>
@@ -51,6 +64,7 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
+      {/* need to create a demo login button */}
     </form>
   );
 }
