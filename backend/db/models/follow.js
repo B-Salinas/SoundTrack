@@ -2,12 +2,12 @@
 module.exports = (sequelize, DataTypes) => {
   const Follow = sequelize.define('Follow', {
     user_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'Users' },
     },
     followed_user_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'Users' },
     },

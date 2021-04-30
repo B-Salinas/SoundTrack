@@ -8,7 +8,7 @@ import SignupForm from "./components/SignupForm";
 
 import Navigation from "./components/Navigation";
 import Discover from './components/Discover';
-import Test from './components/Test';
+// import Test from './components/Test';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,14 +25,11 @@ function App() {
           <Route path='/'> 
             <Discover />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login" render={() => (<LoginForm />)}>
             <LoginForm />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup" render={() => (<SignupForm />)}>
             <SignupForm />
-          </Route> 
-          <Route exact path='/test'>
-            <Test />
           </Route> 
         </Switch>
       )}

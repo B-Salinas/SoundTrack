@@ -23,11 +23,11 @@
 /**************************** GENERAL *******************************/
 
 .title {
-  font-size: 50px;
+  font-size: 35px;
 }
 
 .text {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 
@@ -93,8 +93,8 @@
 }
 
 .trending-title.title {
-  font-size: 40px;
-}
+  font-size: 25px;
+} 
 
 .trending-button {
     color: white;

@@ -2,24 +2,24 @@ import './stylesheets/Navbar.css';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+// import ProfileButton from './ProfileButton';
 
 function Navbar() {
   const sessionUser = useSelector(state => state.session.user);
 
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
-  } else {
-    sessionLinks = (
-      <>
-        <NavLink to="/login">Sign In</NavLink>
-        <NavLink to="/signup">Create Account</NavLink>
-      </>
-    );
-  }
+  // let sessionLinks;
+  // if (sessionUser) {
+  //   sessionLinks = (
+  //     <ProfileButton user={sessionUser} />
+  //   );
+  // } else {
+  //   sessionLinks = (
+  //     <>
+  //       <NavLink to="/login">Sign In</NavLink>
+  //       <NavLink to="/signup">Create Account</NavLink>
+  //     </>
+  //   );
+  // }
   return (
     <div className="nav-container">
       <div className="nav-logo">
@@ -33,8 +33,9 @@ function Navbar() {
         </NavLink>
       </div>
       <div className="nav-auth-links">
-        {/* Nav Links to Sign In and Create Account Pages */}
-        <div className="login">
+        {sessionUser ? <NavLink to="/login">Sign In</NavLink> :
+        <NavLink to="/signup">Create Account</NavLink>}
+        {/* <div className="login">
           <NavLink to='/login'>
             <button className="signin-button"> Sign In </button>
           </NavLink>
@@ -43,7 +44,7 @@ function Navbar() {
           <NavLink to='/signup'>
             <button className="register-button"> Create Account </button>
           </NavLink>
-        </div>
+        </div> */}
       </div>
 
     </div>

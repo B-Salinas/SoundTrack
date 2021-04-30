@@ -2,16 +2,16 @@
 module.exports = (sequelize, DataTypes) => {
   const Album = sequelize.define('Album', {
     user_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'Users' },
     },
     album_title: {
-      type: Sequelize.STRING(150),
+      type: DataTypes.STRING(150),
       allowNull: false,
     },
     img_url: {
-      type: Sequelize.STRING(150),
+      type: DataTypes.STRING(150),
       allowNull: false,
     },
   }, {});
