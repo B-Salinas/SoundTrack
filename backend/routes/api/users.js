@@ -47,6 +47,15 @@ router.post('', validateSignup, asyncHandler(async (req, res) => {
   }),
 );
 
+// get a user 
+router.get("/:id", asyncHandler((async (req, res) => {
+  let user_id = parseInt(req.params.id, 10);
+  let user = await User.getUserById(user_id);
+  
+  console.log(user);
+  return res.json(user);
+})));
+
 
 
 
