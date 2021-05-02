@@ -1,0 +1,54 @@
+* {
+  font-family: Arial, Helvetica, sans-serif
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.hero-container * {
+  display: flex;
+  flex-direction: row;;
+  justify-content: center;
+}
+
+.hero-title {
+  grid-column: 4 / 10;
+  padding-top: 100px;
+}
+
+.hero-title > p {
+  font-size: 30px;
+}
+
+.hero-text {
+  grid-column: 5 / 9;
+  text-align: center;
+}
+
+.hero-text p {
+  font-size: 20px;
+}
+
+.hero-register {
+  grid-column: 4 / 10;
+  padding-top: 50px;
+}
+
+.register-button {
+  color: white;
+  background-color:  #067c00;
+  padding: 8px 8px;
+  border-radius: 22px;
+  width: 175px;
+  margin-left: 25px;
+  border: none;
+  font-size: 13px;
+  outline: none;
+  margin-bottom: 45px;
+} 
+
+.register-button:hover {
+  background: lightgrey;
+}

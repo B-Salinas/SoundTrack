@@ -1,0 +1,46 @@
+* {
+  font-family: Arial, Helvetica, sans-serif
+}
+
+.trending-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.trending-container * {
+  display: flex;
+  flex-direction: row;;
+  justify-content: center;
+}
+
+.trending-title {
+  grid-column: 4 / 10;
+  padding-top: 100px;
+  text-align: center;
+}
+
+.trending-title > p {
+  font-size: 30px;
+}
+
+.trending-signin {
+  grid-column: 4 / 10;
+  padding-top: 50px;
+}
+
+.signin-button {
+  color: white;
+  background-color:  #067c00;
+  padding: 8px 8px;
+  border-radius: 22px;
+  width: 175px;
+  margin-left: 25px;
+  border: none;
+  font-size: 13px;
+  outline: none;
+  margin-bottom: 50px;
+} 
+
+.signin-button:hover {
+  background: lightgrey;
+}

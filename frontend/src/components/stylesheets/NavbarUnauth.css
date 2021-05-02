@@ -1,0 +1,44 @@
+.navbar-unauth-links {
+  display: grid;
+  height: inherit;
+  width: 90%;
+  /* justify-self: end; */
+  display: flex;
+  align-items: center;
+} 
+
+.navbar-unauth-links * {
+  padding: 0px 10px;
+}
+
+.signin-button {
+    color: white;
+    background-color: black;
+    padding: 8px 8px;
+    border-radius: 22px;
+    width: 135px;
+    margin-left: 25px;
+    border: none;
+    font-size: 13px;
+    outline: none;
+}
+
+.signin-button:hover {
+    background: lightgrey;
+}
+
+.register-button {
+    color: white;
+    background-color: #067c00;
+    padding: 8px 8px;
+    border-radius: 22px;
+    width: 135px;
+    border: none;
+    font-size: 13px;
+    outline: none;
+}
+
+.register-button:hover {
+    background: #044e00;
+}
+

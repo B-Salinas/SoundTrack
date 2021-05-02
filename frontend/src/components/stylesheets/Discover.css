@@ -22,45 +22,23 @@
 
 /**************************** GENERAL *******************************/
 
-.title {
+/* .title {
   font-size: 35px;
 }
 
 .text {
   font-size: 20px;
-}
+} */
 
 
 /********************** HERO SECTION *********************/
 
 .hero-container {
-  grid-template-columns: repeat(5fr, 1fr);
-}
-
-.hero-container * {
+  grid-column: 2 / 12;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  /* border: 1px solid yellow; */
+  flex-direction: column;
 }
 
-.hero-container {
-  grid-column: 5 / 9;
-  padding: 45px 0px;
-  border-bottom: 1px solid black;
-}
-
-.hero-title {
-  padding-top: 100px;
-}
-
-.hero-text {
-  padding: 0px 100px;
-  /* flex-wrap: wrap; */
-  overflow-wrap: break-word;
-  align-self: center;
-  /* grid-column: 6 / 8; */
-}
 
 .register-button {
     color: white;
