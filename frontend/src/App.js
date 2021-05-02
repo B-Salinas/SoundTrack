@@ -12,6 +12,7 @@ import Discover2 from './components/Discover2';
 import Hero from './components/Hero'
 import Trending from './components/Trending';
 import AltSignIn from './components/AltSignIn';
+import SongCardTest from './components/SongCardTest';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -36,11 +37,7 @@ function App() {
           <Route path="/signup" component={SignupForm} />
         </Switch>
       )} */}
-      <Navbar />
-
-      <Discover2 />
-
-      <Footer />
+      <SongCardTest />
     </>
   );
 }
