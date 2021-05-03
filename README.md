@@ -11,9 +11,8 @@ _SoundTrack_ is inspired by [SoundCloud](https://soundcloud.com/discover) and al
 - HTML (rendering through React and Redux)
 - CSS
 - Font Awesome
-- SVGs provided by ...
-- Hosted on Heroku
-- AWS S3 Bucket
+[//]: # (- Hosted on Heroku)
+- Cloudinary
 
 #### Back-End
 - [cookie-parser](https://www.npmjs.com/package/cookie-parser) / [csurf](https://www.npmjs.com/package/csurf)
@@ -24,18 +23,17 @@ _SoundTrack_ is inspired by [SoundCloud](https://soundcloud.com/discover) and al
 - [faker](https://www.npmjs.com/package/faker) for generating large amounts of fake data
 - **uses [postgreSQL](https://www.postgresql.org/) database**
 - [sequelize](https://www.npmjs.com/package/sequelize) / [sequelize-cli](https://www.npmjs.com/package/sequelize-cli)
-- **ANYTHING ELSE THAT WAS IMPORTED IN AUTH ME PROJECT** 
 
-#### React Components
-#### Redux Store Tree
+[//]: # (#### React Components)
+[//]: # (#### Redux Store Tree)
 
 # Features
 - User authentication is handled using bcryptjs library for password hashing.
-- Grants access to features like uploading and deleting songs to authorized users only.
-- Designed around a relational database schema, which allows users to upload, edit, like, and comment on songs and follow other users with dynamic data and rendering.
-- Makes use of AJAX / API Routes to render elements such as liking songs and following other users asynchronously.
+[//]: # (- Grants access to features like uploading and deleting songs to authorized users only.)
+[//]: # (- Designed around a relational database schema, which allows users to upload, edit, like, and comment on songs and follow other users with dynamic data and rendering.)
+[//]: # (- Makes use of AJAX / API Routes to render elements such as liking songs and following other users asynchronously.)
 - Includes csrf attack protection and performs front-end and back-end validation on forms.
-- **THERE'S DEFINITELY MORE**
+
 
 # Future Implementations
 - Wave Forms
