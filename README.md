@@ -9,7 +9,7 @@ Check out the [wiki](https://github.com/B-Salinas/SoundTrack/wiki) for more info
 # Technologies 
 
 #### Front-End
-- React ![React Logo](<i class="fab fa-react"></i>)
+- React <i class="fab fa-react"></i>
 - Redux
 - CSS
 - Font Awesome
