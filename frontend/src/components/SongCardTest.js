@@ -1,9 +1,13 @@
+import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+
+import songsReducer from '../store/song';
+
 import './stylesheets/SongCardTest.css'
 
-function SongCardTest() {
-  const audio = new Audio("https://res.cloudinary.com/soundtrack-2/video/upload/v1619803494/audio/red-lotus-theme_mznatf.mp3");
 
-  // where the source would , is where i would pull the information from the database to .map it
+function SongCardTest({ song }) {
+  console.log(song);
 
   return (
     <div className="song-card-container">

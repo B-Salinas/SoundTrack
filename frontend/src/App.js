@@ -13,6 +13,8 @@ import Hero from './components/Hero'
 import Trending from './components/Trending';
 import AltSignIn from './components/AltSignIn';
 import SongCardTest from './components/SongCardTest';
+import Explore from './components/Explore';
+import SongCollection from './components/SongCollection';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -29,15 +31,18 @@ function App() {
 
   return (
     <>
-      {/* <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
+      {/* <Navigation isLoaded={isLoaded} /> */}
+      <Navbar />
+      {/* {isLoaded && (
         <Switch>
-          <Route path='/' component={Discover} /> 
+          <Route path='/' exact component={Discover2} /> 
           <Route path="/login" component={LoginForm} />
           <Route path="/signup" component={SignupForm} />
+          <Route path="/explore" component={Explore} />
         </Switch>
       )} */}
-      <SongCardTest />
+      <SongCollection />
+      <Footer />
     </>
   );
 }

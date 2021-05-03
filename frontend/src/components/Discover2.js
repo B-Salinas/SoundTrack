@@ -8,11 +8,14 @@ import './stylesheets/Discover2.css';
 function Discover2() {
   return (
     <div className="discover-container">
-      <Hero />
-      <hr />
-      <Trending />
-      <hr/>
-      <AltSignIn />
+      <div className="main-content-container">
+        <Hero />
+        <hr />
+        <Trending />
+        <hr />
+        <AltSignIn />
+      </div>
+      
     </div>
   )
 };

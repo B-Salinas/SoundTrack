@@ -32,8 +32,8 @@ function LoginFormPage() {
     const credential = 'Demo-lition';
     const password = 'password';
 
-    return dispatch(sessionActions.login({ credential, password })).catch(
-      async (res) => {
+    return dispatch(sessionActions.login({ credential, password }))
+    .catch(async (res) => {
         const data = await res.json();
       }
     );
@@ -41,11 +41,11 @@ function LoginFormPage() {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
+      <label className="username">
         Username or Email
         <input
           type="text"
@@ -54,7 +54,7 @@ function LoginFormPage() {
           required
         />
       </label>
-      <label>
+      <label className="password">
         Password
         <input
           type="password"
@@ -64,7 +64,7 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
-      {/* need to create a demo login button */}
+      <button type="submit" onClick={demoSubmit}>Demo Log In</button>
     </form>
   );
 }
