@@ -9,7 +9,7 @@ Check out the [wiki](https://github.com/B-Salinas/SoundTrack/wiki) for more info
 # Technologies 
 
 #### Front-End
-- React <i class="fab fa-react"></i>
+- React <div width="25" height="25"><img src="public/favicon.ico" width="25" height="25"></div>
 - Redux
 - CSS
 - Font Awesome
