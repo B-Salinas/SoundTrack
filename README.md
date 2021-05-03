@@ -11,8 +11,9 @@ _SoundTrack_ is inspired by [SoundCloud](https://soundcloud.com/discover) and al
 - HTML (rendering through React and Redux)
 - CSS
 - Font Awesome
-[//]: # (- Hosted on Heroku)
 - Cloudinary
+
+[//]: # (- Hosted on Heroku)
 
 #### Back-End
 - [cookie-parser](https://www.npmjs.com/package/cookie-parser) / [csurf](https://www.npmjs.com/package/csurf)
