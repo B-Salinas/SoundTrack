@@ -4,11 +4,13 @@
 
 _SoundTrack_ is inspired by [SoundCloud](https://soundcloud.com/discover) and allows users to share and discover soundtracks from different movies. Users can listen to music uninterrupted as they browser different songs, albums, and other users. Users can also upload their own songs and create their own albums. 
 
+Check out the [wiki](https://github.com/B-Salinas/SoundTrack/wiki) for more information! 
+
 # Technologies 
 
 #### Front-End
-- Javascript
-- HTML (rendering through React and Redux)
+- React ![React Logo](<i class="fab fa-react"></i>)
+- Redux
 - CSS
 - Font Awesome
 - Cloudinary
