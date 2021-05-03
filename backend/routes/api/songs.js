@@ -8,13 +8,13 @@ const router = express.Router();
 /************************************************************** */
 
 // get all songs
-router.get('/', asyncHandler( async(req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
   const songs = await Song.findAll();
   return res.json(songs);
-}))
+}));
 
-// get specific song
-router.get('/:id', asyncHandler( async(req, res) => {
+// get a specific song
+router.get('/:id', asyncHandler(async function (req, res) {
   const song = await Song.findOne(req.params.id);
   return res.json(song);
-}))
+}));
