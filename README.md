@@ -30,10 +30,11 @@ _SoundTrack_ is inspired by [SoundCloud](https://soundcloud.com/discover) and al
 
 # Features
 - User authentication is handled using bcryptjs library for password hashing.
+- Includes csrf attack protection and performs front-end and back-end validation on forms.
+
 [//]: # (- Grants access to features like uploading and deleting songs to authorized users only.)
 [//]: # (- Designed around a relational database schema, which allows users to upload, edit, like, and comment on songs and follow other users with dynamic data and rendering.)
 [//]: # (- Makes use of AJAX / API Routes to render elements such as liking songs and following other users asynchronously.)
-- Includes csrf attack protection and performs front-end and back-end validation on forms.
 
 
 # Future Implementations
