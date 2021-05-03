@@ -26,6 +26,11 @@
     padding-right: 20px;
 }
 
+.github a:hover,
+.linkedin a:hover {
+  color: lightgrey;
+}
+
 .copyright {
     display: flex;
     grid-column: 9 / 12;

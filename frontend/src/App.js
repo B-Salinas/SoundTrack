@@ -33,15 +33,14 @@ function App() {
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
       <Navbar />
-      {/* {isLoaded && (
+      {isLoaded && (
         <Switch>
           <Route path='/' exact component={Discover2} /> 
           <Route path="/login" component={LoginForm} />
           <Route path="/signup" component={SignupForm} />
-          <Route path="/explore" component={Explore} />
+          <Route path="/explore" component={SongCollection} />
         </Switch>
-      )} */}
-      <SongCollection />
+      )}
       <Footer />
     </>
   );
