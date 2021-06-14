@@ -1,6 +1,6 @@
 # Welcome to SoundTrack!
 
-### **Live Link: [SoundTrack](https://en.wikipedia.org/wiki/HTTP_404)**
+### **Live Link: [SoundTrack](https://soundtrack-app.herokuapp.com/)**
 
 _SoundTrack_ is inspired by [SoundCloud](https://soundcloud.com/discover) and allows users to share and discover soundtracks from different movies. Users can listen to music uninterrupted as they browser different songs, albums, and other users. Users can also upload their own songs and create their own albums. 
 
