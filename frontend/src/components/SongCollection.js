@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { getSongs } from '../store/song';
-
+import { getSongs, uploadSong } from '../store/song';
 
 import SongCardTest from './SongCardTest';
 
@@ -13,9 +12,10 @@ function SongCollection() {
   const sessionUser = useSelector(state => state.session.user);
   const songs = useSelector(state => state.songs.allSongs);
   
-  // useEffect(() => {
-  //   dispatch(getSongs());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getSongs());
+    // dispatch(uploadSong(1, 'random string', 'google.com', 'youtube.com'));
+  }, [dispatch]);
 
   // if (!sessionUser) return (
   //   <Redirect to="/login" />
