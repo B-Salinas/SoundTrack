@@ -18,14 +18,10 @@ function NavbarAuth() {
   return (
     <div className="navbar-auth-links">
       <div className="upload">
-        <NavLink to='/upload'>
-          <button className="upload-button"> Upload </button>
-        </NavLink>
+        <button className="upload-button"> Upload </button>
       </div>
       <div className="logout">
-        <NavLink to="/logout">
-          <button className="logout-button" onClick={handleLogout}> Log Out </button>
-        </NavLink>
+        <button className="logout-button" onClick={handleLogout}> Log Out </button>
       </div>
     </div>
   );

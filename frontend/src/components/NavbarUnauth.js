@@ -11,26 +11,23 @@ function NavbarUnauth() {
   const history = useHistory();
 
   const handleLogin = () => {
-    dispatch(login());
-    history.push('/explore');
+    // dispatch(login());
+
+    history.push('/login');
   }
 
   const handleSignup = () => {
-    dispatch(signup());
-    history.push('/explore');
+    // dispatch(signup());
+    history.push('/signup');
   }
 
   return (
     <div className="navbar-unauth-links">
       <div className="signin">
-        <NavLink to="/signin">
-          <button className="signin-button" onClick={handleLogin}> Sign In </button>
-        </NavLink>
+        <button className="signin-button" onClick={handleLogin}> Log In </button>
       </div>
-      <div className="register">
-        <NavLink to="/register">
-          <button className="register-button" onClick={handleSignup}> Create Account </button>
-        </NavLink>
+      <div className="signup">
+        <button className="register-button" onClick={handleSignup}> Create Account </button>
       </div>
     </div>
   );

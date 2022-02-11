@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     profilePic: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
     hashedPassword: { 
       type: DataTypes.STRING.BINARY,

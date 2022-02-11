@@ -64,7 +64,7 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
-      <button type="submit" onClick={demoSubmit}>Demo Log In</button>
+      <button onClick={demoSubmit}>Demo Log In</button>
     </form>
   );
 }

@@ -1,10 +1,14 @@
 import './stylesheets/Discover.css';
+import { useHistory } from 'react-router-dom';
+
 import Navbar from './Navbar';
 import { NavLink } from 'react-router-dom';
 
 import Hero from './Hero';
 
 function Discover() {
+  const history = useHistory();
+
   return (
     <>
     <Navbar />
@@ -42,9 +46,7 @@ function Discover() {
               <p>
                 Already have an account?
               </p>
-              <NavLink to='/signin'>
-                <button className="signin-button"> Sign In </button>
-              </NavLink>
+                <button onClick={() => {history.push('/login')}} className="signin-button"> Log In </button>
             </div>
 
           </div>

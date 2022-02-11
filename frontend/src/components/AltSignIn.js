@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
-import './stylesheets/AltSignIn.css'
+import { useHistory } from 'react-router-dom';
+
 
 function AltSignIn() {
+  const history = useHistory();
   return (
     <div className="alt-container"> 
       <div className="alt-info">
@@ -20,9 +22,7 @@ function AltSignIn() {
       </div>
       <div className="alt-signin">
         <p className="alt-signin-text"> Already have an account? </p>
-        <NavLink to="/signin"> 
-          <button className="alt-signin-button"> Sign In </button>
-        </NavLink>
+        <button onClick={() => { history.push('/login') }} className="alt-signin-button"> Log In </button>
       </div>
     </div>
   );
