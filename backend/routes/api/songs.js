@@ -2,6 +2,8 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { Song } = require('../../db/models');
+// TODO: IMPORT BACKEND AUTHENTICATION MIDDLEWARE 'requireAuth' FOR 
+// USER FOR SENSITIVE API ROUTES (POST / PATCH / DELETE)
 
 const router = express.Router();
 
@@ -20,6 +22,7 @@ router.get('/', asyncHandler(async (req, res) => {
 // }));
 
 // POST A SPECIFIC SONG
+// TODO: ADD USER AUTH MIDDLEWARE
 router.post('/', asyncHandler(async (req, res) => {
   const { album, title, img, audio } = req.body;
   try {
@@ -31,16 +34,23 @@ router.post('/', asyncHandler(async (req, res) => {
     })
     return res.json(newSong);
   } catch (e) {
-    res.sendStatus(500);
+    // can use below code to modify status messages:
+    res.status(500);
+    res.send('it didn\'t work... :(')
   }
 }))
 
 // UPDATE A SONG
+// TODO: ADD USER AUTH MIDDLEWARE
 router.patch('/', asyncHandler(async (req, res) => {
   const { song_id, album, title, img, audio } = req.body;
   try {
     const updateSong = await Song.findByPk(song_id);
-    if (album) updateSong.album_id = album; 
+
+    // add more specific conditions, i.e.: (album !== undefined)
+    // so users can actually set a title as blank if they
+    // want to
+    if (album) updateSong.album_id = album;
 
     if (title) updateSong.song_title = title;
 
@@ -57,6 +67,7 @@ router.patch('/', asyncHandler(async (req, res) => {
 }))
 
 // DELETES A SPECIFIC SONG
+// TODO: ADD USER AUTH MIDDLEWARE
 router.delete('/', asyncHandler(async (req, res) => {
   const { song_id } = req.body;
   try {
