@@ -2,7 +2,8 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
-const songsRouter = require('./songs.js')
+const songsRouter = require('./songs.js');
+const commentsRouter = require('./comments.js');
 
 
 // const { User } = require('../../db/models');
@@ -14,6 +15,7 @@ const songsRouter = require('./songs.js')
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/songs', songsRouter);
+router.use('/comments', commentsRouter);
 
 /************************* TESTING **************************** */
 // will test the setTokenCookie function by getting the demo user and called setTokenCookie
@@ -59,4 +61,3 @@ router.use('/songs', songsRouter);
 // });
 
 module.exports = router;
-

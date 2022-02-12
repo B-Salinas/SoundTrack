@@ -6,11 +6,11 @@ const { secret, expiresIn } = jwtConfig;
 
 // Sends a JWT Cookie, this function will be used in the login/signup routes later
 const setTokenCookie = (res, user) => {
-  
+
   // create the token
   const token = jwt.sign(
     { data: user.toSafeObject() },
-    secret, 
+    secret,
     { expiresIn: parseInt(expiresIn) } // 604,800 = 1 week
   );
 
@@ -23,7 +23,7 @@ const setTokenCookie = (res, user) => {
     secure: isProduction,
     sameSite: isProduction && "Lax",
   });
-    
+
   return token;
 }
 
@@ -57,7 +57,7 @@ const requireAuth = [
     if (req.user) return next();
 
     const err = new Error('Unauthorized');
-    
+
     err.title = 'Unauthorized';
     err.errors = ['Unauthorized'];
     err.status = 401;
@@ -66,8 +66,24 @@ const requireAuth = [
   },
 ];
 
+// TODO: ADD VERIFICATION OF AUTHENTICATION FOR BACKEND
+// INSTEAD OF JUST VERIFYING A USER EXISTS
+const requireAndVerifyAuth = [
+  requireAuth,
+  function (req, res, next) {
+    if (req.user.id === req.body.userId) return next();
+
+    err.title = 'Unauthorized';
+    err.errors = ['Unauthorized'];
+    err.status = 401;
+
+    return next(err);
+  }
+];
+
 module.exports = {
   setTokenCookie,
   restoreUser,
-  requireAuth
+  requireAuth,
+  requireAndVerifyAuth
 };
