@@ -57,41 +57,9 @@ router.get("/:id", asyncHandler((async (req, res) => {
 })));
 
 // TODO: GET ALL FOLLOWERS OF A USER
-router.get('/followers/:userId', asyncHandler(async (req, res) => {
-  const { userId } = req.params;
-
-  try {
-    const followers = Follow.findAll({
-      where: {
-        followed_user_id: userId
-      }
-    });
-
-    return res.json(followers);
-  } catch (e) {
-    res.status(500);
-    res.send(`unable to retrieve followers for user: ${userId}`);
-  }
-}));
 
 // TODO: GET ALL FOLLOWS OF A USER
 // (get all the people that the given user
 // is following)
-router.get('/following/:userId', asyncHandler(async (req, res) => {
-  const { userId } = req.params;
-
-  try {
-    const follows = Follow.findAll({
-      where: {
-        user_id: userId
-      }
-    });
-
-    return res.json(follows);
-  } catch (e) {
-    res.status(500);
-    res.send(`unable to retrieve follows for user: ${userId}`);
-  }
-}));
 
 module.exports = router;
