@@ -36,32 +36,62 @@ const validateSignup = [
 
 // Signup 
 router.post('', validateSignup, asyncHandler(async (req, res) => {
-    const { email, password, username } = req.body;
-    const user = await User.signup({ email, username, password });
+  const { email, password, username } = req.body;
+  const user = await User.signup({ email, username, password });
 
-    await setTokenCookie(res, user);
+  await setTokenCookie(res, user);
 
-    return res.json({
-      user,
-    });
-  }),
+  return res.json({
+    user,
+  });
+}),
 );
 
 // get a user 
 router.get("/:id", asyncHandler((async (req, res) => {
   let user_id = parseInt(req.params.id, 10);
   let user = await User.getUserById(user_id);
-  
+
   console.log(user);
   return res.json(user);
 })));
 
+// TODO: GET ALL FOLLOWERS OF A USER
+router.get('/followers/:userId', asyncHandler(async (req, res) => {
+  const { userId } = req.params;
 
+  try {
+    const followers = Follow.findAll({
+      where: {
+        followed_user_id: userId
+      }
+    });
 
+    return res.json(followers);
+  } catch (e) {
+    res.status(500);
+    res.send(`unable to retrieve followers for user: ${userId}`);
+  }
+}));
 
+// TODO: GET ALL FOLLOWS OF A USER
+// (get all the people that the given user
+// is following)
+router.get('/following/:userId', asyncHandler(async (req, res) => {
+  const { userId } = req.params;
 
+  try {
+    const follows = Follow.findAll({
+      where: {
+        user_id: userId
+      }
+    });
 
-
-
+    return res.json(follows);
+  } catch (e) {
+    res.status(500);
+    res.send(`unable to retrieve follows for user: ${userId}`);
+  }
+}));
 
 module.exports = router;
