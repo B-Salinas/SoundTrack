@@ -15,6 +15,7 @@ router.get('/', asyncHandler(async (req, res) => {
   return res.json(songs);
 }));
 
+// MAYBE TODO: ADD LOGIC FOR GETTING AMOUNT OF LIKES OF A SONG
 // GET A SPECIFIC SONG
 // router.get('/:id', asyncHandler(async function (req, res) {
 //   const song = await Song.findOne(req.params.id);
