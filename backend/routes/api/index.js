@@ -5,7 +5,6 @@ const usersRouter = require('./users.js');
 const songsRouter = require('./songs.js');
 const commentsRouter = require('./comments.js');
 
-
 // const { User } = require('../../db/models');
 // const { setTokenCookie } = require('../../utils/auth.js');
 // const { restoreUser } = require('../../utils/auth.js');
