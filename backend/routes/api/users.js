@@ -36,32 +36,30 @@ const validateSignup = [
 
 // Signup 
 router.post('', validateSignup, asyncHandler(async (req, res) => {
-    const { email, password, username } = req.body;
-    const user = await User.signup({ email, username, password });
+  const { email, password, username } = req.body;
+  const user = await User.signup({ email, username, password });
 
-    await setTokenCookie(res, user);
+  await setTokenCookie(res, user);
 
-    return res.json({
-      user,
-    });
-  }),
+  return res.json({
+    user,
+  });
+}),
 );
 
 // get a user 
 router.get("/:id", asyncHandler((async (req, res) => {
   let user_id = parseInt(req.params.id, 10);
   let user = await User.getUserById(user_id);
-  
+
   console.log(user);
   return res.json(user);
 })));
 
+// TODO: GET ALL FOLLOWERS OF A USER
 
-
-
-
-
-
-
+// TODO: GET ALL FOLLOWS OF A USER
+// (get all the people that the given user
+// is following)
 
 module.exports = router;

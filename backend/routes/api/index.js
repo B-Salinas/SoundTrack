@@ -4,6 +4,8 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const songsRouter = require('./songs.js');
 const commentsRouter = require('./comments.js');
+const likesRouter = require('./likes.js');
+const followsRouter = require('./follows.js');
 
 // const { User } = require('../../db/models');
 // const { setTokenCookie } = require('../../utils/auth.js');
@@ -15,6 +17,8 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/songs', songsRouter);
 router.use('/comments', commentsRouter);
+router.use('/likes', likesRouter);
+router.use('/follows', followsRouter);
 
 /************************* TESTING **************************** */
 // will test the setTokenCookie function by getting the demo user and called setTokenCookie
