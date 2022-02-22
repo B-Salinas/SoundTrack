@@ -7,7 +7,6 @@ const commentsRouter = require('./comments.js');
 const likesRouter = require('./likes.js');
 const followsRouter = require('./follows.js');
 
-
 // const { User } = require('../../db/models');
 // const { setTokenCookie } = require('../../utils/auth.js');
 // const { restoreUser } = require('../../utils/auth.js');
