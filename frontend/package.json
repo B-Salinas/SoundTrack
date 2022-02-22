@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^1.8.5",
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+    "framer-motion": "^4.1.17",
     "js-cookie": "^2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -39,5 +43,5 @@
   "devDependencies": {
     "redux-logger": "^3.0.6"
   },
-    "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000"
 }
