@@ -22,7 +22,7 @@ function Discover() {
             
             <div className="trending">
               <NavLink to='/trending'>
-                <button className="trending-button"> Explore Trending Playlists </button>
+                <button className="trending-button"> does this change anthyijdfdf </button>
               </NavLink>
             </div>
 

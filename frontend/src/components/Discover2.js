@@ -15,7 +15,6 @@ function Discover2() {
         <hr />
         <AltSignIn />
       </div>
-      
     </div>
   )
 };

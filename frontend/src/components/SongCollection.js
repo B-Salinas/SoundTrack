@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { getSongs, uploadSong } from '../store/song';
+import { useDispatch } from 'react-redux';
+// import { Redirect } from 'react-router-dom';
+import { getSongs } from '../store/song';
 
-import SongCardTest from './SongCardTest';
+// import SongCardTest from './SongCardTest';
 
 import './stylesheets/SongCollection.css';
 
 function SongCollection() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
-  const songs = useSelector(state => state.songs.allSongs);
+  // const sessionUser = useSelector(state => state.session.user);
+  // const songs = useSelector(state => state.songs.allSongs);
   
   useEffect(() => {
     dispatch(getSongs());

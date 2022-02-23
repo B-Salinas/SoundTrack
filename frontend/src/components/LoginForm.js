@@ -34,7 +34,7 @@ function LoginFormPage() {
 
     return dispatch(sessionActions.login({ credential, password }))
     .catch(async (res) => {
-        const data = await res.json();
+        // const data = await res.json();
       }
     );
   };
