@@ -4,7 +4,8 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth.js');
-const { User } = require('../../db/models');
+const { User, Like } = require('../../db/models');
+
 const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
@@ -33,6 +34,11 @@ const validateLogin = [
 router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
     const { credential, password } = req.body;
     const user = await User.login({ credential, password });
+    const likes = await Like.findAll({
+      where: {
+        user_id: user.id
+      }
+    });
 
     if (!user) {
       const err = new Error('Login failed');
@@ -45,7 +51,7 @@ router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
     await setTokenCookie(res, user);
 
     return res.json({
-      user,
+      user, likes
     });
   }),
 );
@@ -57,11 +63,17 @@ router.delete('/', (_req, res) => {
 });
 
 // restore session user
-router.get('/', restoreUser, (req, res) => {
+router.get('/', restoreUser, async (req, res) => {
   const { user } = req;
   if (user) {
+    const likes = await Like.findAll({
+      where: {
+        user_id: user.id
+      }
+    });
     return res.json({
-      user: user.toSafeObject() // will return the session user as JSON under the key of user
+      user: user.toSafeObject(), // will return the session user as JSON under the key of user
+      likes
     });
   } else {
     return res.json({}); // will return a JSON with an empty object

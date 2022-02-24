@@ -4,6 +4,8 @@ const { ValidatorsImpl } = require("express-validator/src/chain");
 const { Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
 
+// const { Like } = require('./index.js');
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: {
@@ -57,7 +59,8 @@ module.exports = (sequelize, DataTypes) => {
 
   User.prototype.toSafeObject = function() {
     const { id, username, email } = this;
-    return { id, username, email };
+    const user = { id, username, email };
+    return user;
   };
 
   User.prototype.validatePassword = function (password) {
@@ -76,10 +79,10 @@ module.exports = (sequelize, DataTypes) => {
           username: credential,
           email: credential,
         },
-      },
+      }
     });
     if (user && user.validatePassword(password)) {
-      return await User.scope('currentUser').findByPk(user.id);
+      return  await User.scope('currentUser').findByPk(user.id);
     }
   };
   

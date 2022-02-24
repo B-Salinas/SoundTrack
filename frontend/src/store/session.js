@@ -1,3 +1,4 @@
+import { useRangeSlider } from '@chakra-ui/react';
 import { csrfFetch } from './csrf';
 
 // just variables 
@@ -20,8 +21,8 @@ const removeUser = () => {
 };
 
 // thunks - uses async/await and dispatch
-export const login = (user) => async (dispatch) => {
-  const { credential, password } = user;
+export const login = (userData) => async (dispatch) => {
+  const { credential, password } = userData;
   const response = await csrfFetch('/api/session', {
     method: 'POST',
     body: JSON.stringify({
@@ -29,16 +30,24 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
-  const data = await response.json();
-  dispatch(setUser(data.user));
-  return response;
+  const { user, likes } = await response.json();
+  if (user) {
+    dispatch(setUser({ ...user, likes }));
+  } else {
+    dispatch(setUser(null))
+  }
+  return response; 
 };
 
 export const restoreUser = () => async dispatch => {
   const response = await csrfFetch('/api/session');
-  const data = await response.json();
-  dispatch(setUser(data.user));
-  return response;
+  const { user, likes } = await response.json();
+  if (user) {
+    dispatch(setUser({ ...user, likes }));
+  } else {
+    dispatch(setUser(null))
+  }
+  return response; 
 };
 
 export const signup = (user) => async (dispatch) => {
