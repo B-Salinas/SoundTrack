@@ -2,13 +2,24 @@ import React from 'react';
 
 import { 
   Box,
+  Container,
+  HStack,
+  IconButton,
+  Flex,
   Image,
-  SimpleGrid
  } from '@chakra-ui/react'
+
+import { StarIcon } from '@chakra-ui/icons';
 
 import './stylesheets/SongCollection.css';
 
 function SongRow() {
+
+  
+
+
+
+
   return (
     // <div className="song-card-row">
     //   <div className="song-card-container">
@@ -41,7 +52,7 @@ function SongRow() {
     //   </div>
     //   <div className="song-card-container">
     //     <div className="song-image-container">
-    //       <img className="song-image" alt="test" src="https://res.cloudinary.com/soundtrack-2/image/upload/v1619801657/images/black-panther_aobbc3.jpg" height="300px" width="inherit"></img>
+    //       <img className="song-image" alt="test" src="https://res.cloudinary.com/soundtrack-2/image/upload/w_500,h_500/v1619801657/images/black-panther_aobbc3.jpg" height="300px" width="inherit"></img>
     //     </div>
     //     <div className="song-info-container">
     //       <p className="song-title"> All The Stars </p>
@@ -55,7 +66,7 @@ function SongRow() {
     //   </div>
     //   <div className="song-card-container">
     //     <div className="song-image-container">
-    //       <img className="song-image" alt="test" src="https://res.cloudinary.com/soundtrack-2/image/upload/v1619801658/images/someone-great_ukdnlh.jpg" height="300px" width="inherit"></img>
+    //       <img className="song-image" alt="test" src="https://res.cloudinary.com/soundtrack-2/image/upload/w_500,h_500/v1619801658/images/someone-great_ukdnlh.jpg" height="300px" width="inherit"></img>
     //     </div>
     //     <div className="song-info-container">
     //       <p className="song-title"> Dreaming of You </p>
@@ -69,90 +80,106 @@ function SongRow() {
     //   </div>
     // </div>
     <> 
-      <SimpleGrid maxW='auto' h='auto' columns={4} spacing={2}>
-        <Box maxW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-          <Image w='100%' h='100%' src='https://res.cloudinary.com/soundtrack-2/image/upload/v1619985016/images/legend-of-korra_hmlauy.jpg' alt='Service and Sacrifice' />
-          <Box p='6'>
-            <Box display='flex' alignItems='baseline'>
-              <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
-                The Legend of Korra
-              </Box>
-            </Box>
-            <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight'>
-              Service and Sacrifice
-            </Box>
-            <Box display='flex' mt='2' alignItems='center'>
-              <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803505/audio/service-and-sacrifice_w9xrfh.mp3"}>
-                <source></source>
-              </audio>
-            </Box>
-          </Box>
-        </Box>
+      <Container maxW='container.xl'>
 
-        <Box maxW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-          <Image w='100%' h='100%' src='https://res.cloudinary.com/soundtrack-2/image/upload/v1619985027/images/star-wars-revenge-of-the-sith_solvex.jpg' alt='Battle of the Heros' />
-          <Box p='6'>
-            <Box display='flex' alignItems='baseline'>
-              <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
-                Star Wars
+        <HStack>
+
+          <Box minW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+            <Image w='100%' h='100%' src='https://res.cloudinary.com/soundtrack-2/image/upload/w_500,h_500/v1619985016/images/legend-of-korra_hmlauy.jpg' alt='Service and Sacrifice' />
+            <Box p='4'>
+              <Box display='flex' alignItems='baseline'>
+                <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
+                  The Legend of Korra
+                </Box>
+              </Box>
+              <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight'>
+                Service and Sacrifice
+              </Box>
+              <Box>
+                <IconButton icon={<StarIcon />}>  </IconButton>
+              </Box>
+              <Box display='flex' mt='2' alignItems='center'>
+                <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803505/audio/service-and-sacrifice_w9xrfh.mp3"}>
+                  <source></source>
+                </audio>
               </Box>
             </Box>
-            <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight'>
-              Battle of the Heros
-            </Box>
-            <Box display='flex' mt='2' alignItems='center'>
-              <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803931/audio/battle-of-the-heros_sgt5iu.mp3"}>
-                <source></source>
-              </audio>
+          </Box> 
+
+          <Box minW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+            <Image w='100%' h='100%' src='https://res.cloudinary.com/soundtrack-2/image/upload/w_500,h_500/v1619985027/images/star-wars-revenge-of-the-sith_solvex.jpg' alt='Battle of the Heros' />
+            <Box p='4'>
+              <Box display='flex' alignItems='baseline'>
+                <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
+                  Star Wars
+                </Box>
+              </Box>
+              <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight'>
+                Battle of the Heros
+              </Box>
+              <Box>
+                <IconButton icon={<StarIcon />}>  </IconButton>
+              </Box>
+              <Box display='flex' mt='2' alignItems='center'>
+                <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803931/audio/battle-of-the-heros_sgt5iu.mp3"}>
+                  <source></source>
+                </audio>
+              </Box>
             </Box>
           </Box>
-        </Box>
+
+          <Box minW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+            <Image w='100%' h='100%' src='https://res.cloudinary.com/soundtrack-2/image/upload/w_500,h_500/v1619801658/images/someone-great_ukdnlh.jpg' alt='Dreaming of You' />
+            <Box p='4'>
+              <Box display='flex' alignItems='baseline'>
+                <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
+                  Someone Great
+                </Box>
+              </Box>
+              <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight'>
+                Dreaming of You
+              </Box>
+              <Box>
+                <IconButton icon={<StarIcon />}>  </IconButton> 
+              </Box>
+              <Box display='flex' mt='2' alignItems='center'>
+                <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803511/audio/dreaming-of-you_tmyfkk.mp3"}>
+                  <source></source>
+                </audio>
+              </Box>
+            </Box>
+          </Box>
+
+        </HStack>
+
         
-        <Box maxW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-          <Image w='100%' h='100%' src='https://res.cloudinary.com/soundtrack-2/image/upload/v1619801657/images/black-panther_aobbc3.jpg' alt='All The Stars' />
-          <Box p='6'>
-            <Box display='flex' alignItems='baseline'>
-              <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
-                Black Panther
-              </Box>
-            </Box>
-            <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight'>
-              All The Stars
-            </Box>
-            <Box display='flex' mt='2' alignItems='center'>
-              <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619802016/audio/all-the-stars_uuiuxz.mp3"}>
-                <source></source>
-              </audio>
-            </Box>
-          </Box>
-        </Box>
+
         
-        <Box maxW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-          <Image w='100%' h='100%' src='https://res.cloudinary.com/soundtrack-2/image/upload/v1619801658/images/someone-great_ukdnlh.jpg' alt='Dreaming Of You' />
-          <Box p='6'>
-            <Box display='flex' alignItems='baseline'>
-              <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
-                Someone Great
-              </Box>
-            </Box>
-            <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight'>
-              Dreaming of You
-            </Box>
-            <Box display='flex' mt='2' alignItems='center'>
-              <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803511/audio/dreaming-of-you_tmyfkk.mp3"}>
-                <source></source>
-              </audio>
-            </Box>
-          </Box>
-        </Box>
 
-      </SimpleGrid>
-      
-
-
+      </Container>
       
     </>
   )
 };
 
 export default SongRow;
+
+// <Box minW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+//   <Image w='100%' h='100%' src='https://res.cloudinary.com/soundtrack-2/image/upload/w_500,h_500/v1619801657/images/black-panther_aobbc3.jpg' alt='Dreaming of You' />
+//   <Box p='4'>
+//     <Box display='flex' alignItems='baseline'>
+//       <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
+//         Black Panther
+//       </Box>
+//     </Box>
+//     <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight'>
+//       All The Stars
+//     </Box>
+//     <Box display='flex' mt='2' alignItems='center'>
+//       <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619802016/audio/all-the-stars_uuiuxz.mp3"}>
+//         <source></source>
+//       </audio>
+//     </Box>
+//   </Box>
+// </Box>
+

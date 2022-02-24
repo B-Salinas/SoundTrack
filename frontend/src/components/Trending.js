@@ -1,5 +1,5 @@
 import React from 'react';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { 
   Button,
@@ -32,28 +32,29 @@ function Trending() {
     // </div>
 
     <>
-      <Grid templateColumns='repeat(12, 1fr)' templateRows='repeat(10, 1fr)' gap={2}>
+      <Grid templateColumns='repeat(12, 1fr)' templateRows='repeat(7, 1fr)' gap={2}>
         <GridItem rowSpan={6} colSpan={1} />
-        <GridItem rowSpan={1} colSpan={2} w='100%' h='20' />
-        <GridItem rowSpan={1} colSpan={6} >
+        <GridItem rowSpan={1} colSpan={1} />
+        <GridItem rowSpan={1} colSpan={8} >
           <Center>
-            <Text fontSize='xl' mt={6}> Hear what's trending for free in the SoundTrack Community </Text>
+            <Text fontSize='2xl' mt={6}> Hear what's trending for free in the SoundTrack Community </Text>
           </Center>
         </GridItem>
-        <GridItem rowSpan={1} colSpan={2} w='100%' h='20'  />
+        <GridItem rowSpan={1} colSpan={1} />
         <GridItem rowSpan={6} colSpan={1} />
         <GridItem rowSpan={5} colSpan={10}>
           <SongRow />
+
         </GridItem>
-        <GridItem rowSpan={1} colSpan={5} w='100%' h='20' />
-        <GridItem rowSpan={1} colSpan={2} w='100%' h='20'>
+        <GridItem rowSpan={1} colSpan={5} />
+        <GridItem rowSpan={1} colSpan={2} >
           <Center>
             <Button size='md' mt={2} colorScheme='gray'>
               Explore Trending Tracks
             </Button>
           </Center>
         </GridItem>
-        <GridItem rowSpan={1} colSpan={5} w='100%' h='20' />
+        <GridItem rowSpan={1} colSpan={5}/>
       </Grid>
     </>
   );

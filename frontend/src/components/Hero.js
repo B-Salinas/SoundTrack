@@ -28,9 +28,9 @@ function Hero() {
     // </div>
     <>
       <Grid templateColumns='repeat(12, 5fr)' templateRows='repeat(5, 1fr)' gap={2}>
-        <GridItem rowSpan={5} colSpan={1}/>
-        <GridItem rowSpan={1} colSpan={10} />
         <GridItem rowSpan={5} colSpan={1} />
+        <GridItem rowSpan={1} colSpan={10} />
+        <GridItem rowSpan={5} colSpan={1}  />
         <GridItem rowSpan={1} colSpan={2} />
 
         <GridItem rowSpan={1} colSpan={6}>

@@ -37,7 +37,7 @@ function Navbar() {
     //   </div>
     // </div>
     <>
-    <Box bg='gray.50'> 
+    <Box bg='gray.100'> 
         <Grid templateColumns='repeat(12, 1fr)' gap={2}>
           <GridItem w='100%' h='20' />
           <GridItem w='100%' h='20' >

@@ -2,9 +2,9 @@ import { csrfFetch } from './csrf';
 
 // variables
 const LOAD = 'songs/LOAD';
-// const UPLOAD = 'songs/UPLOAD';
-// const UPDATE = 'songs/UPDATE';
-// const REMOVE = 'songs/DELETE';
+const UPLOAD = 'songs/UPLOAD';
+const UPDATE = 'songs/UPDATE';
+const REMOVE = 'songs/DELETE';
 
 // action creator
 const load = (songs) => ({
@@ -12,20 +12,20 @@ const load = (songs) => ({
   songs,
 });
 
-// const upload = (song) => ({
-//   type: UPLOAD,
-//   song,
-// });
+const upload = (song) => ({
+  type: UPLOAD,
+  song,
+});
 
-// const update = (song) => ({
-//   type: UPDATE,
-//   song,
-// })
+const update = (song) => ({
+  type: UPDATE,
+  song,
+})
 
-// const remove = (song) => ({
-//   type: REMOVE,
-//   song,
-// })
+const remove = (song) => ({
+  type: REMOVE,
+  song,
+})
 
 
 // thunk 
@@ -49,7 +49,7 @@ export const uploadSong = (album_id, song_title, img_url, audio_url) => async di
   });
 
   if (response.ok) {
-    // const newSong = await response.json();
+    const newSong = await response.json();
     // dispatch(upload(newSong)); 
     // instead of dispatching, it will re-route to the explore page and new song will have been uploaded
     console.log("Congrats on your new song :)")
