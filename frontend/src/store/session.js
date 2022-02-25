@@ -5,6 +5,9 @@ import { csrfFetch } from './csrf';
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
+const LIKE = 'songs/LIKE';
+const UNLIKE = 'songs/UNLIKE'
+
 
 // action creators
 const setUser = (user) => {
@@ -19,6 +22,16 @@ const removeUser = () => {
     type: REMOVE_USER,
   };
 };
+
+const like = (song) => ({
+  type: LIKE,
+  song
+})
+
+const unlike = (song) => ({
+  type: UNLIKE,
+  song
+})
 
 // thunks - uses async/await and dispatch
 export const login = (userData) => async (dispatch) => {
@@ -73,6 +86,36 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
+export const likeSong = (userId, songId) => async dispatch => {
+  const response = await csrfFetch('/api/likes', {
+    method: 'POST',
+    body: JSON.stringify({
+      userId,
+      songId
+    })
+  });
+
+  if (response.ok) {
+    const likedSong = await response.json();
+    dispatch(like(likedSong));
+  }
+}
+
+export const unlikeSong = (userId, songId) => async dispatch => {
+  const response = await csrfFetch('/api/likes', {
+    method: 'DELETE',
+    body: JSON.stringify({
+      userId,
+      songId
+    })
+  });
+  if (response.ok) {
+    const likedSongId = await response.json();
+    dispatch(unlike(likedSongId));
+  }
+};
+
+
 const initialState = { user: null };
 
 // reducer
@@ -86,6 +129,14 @@ const sessionReducer = (state = initialState, action) => {
     case REMOVE_USER:
       newState = Object.assign({}, state);
       newState.user = null;
+      return newState;
+    case LIKE:
+      newState = Object.assign({}, state);
+      newState.user.likes.push(action.song)
+      return newState;
+    case UNLIKE: 
+      newState = Object.assign({}, state);
+      newState.user.likes = state.user.likes.filter((like) => like.id !== action.song)
       return newState;
     default:
       return state;

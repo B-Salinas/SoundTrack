@@ -17,7 +17,7 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/songs', songsRouter);
 // router.use('/comments', commentsRouter);
-// router.use('/likes', likesRouter);
+router.use('/likes', likesRouter);
 // router.use('/follows', followsRouter);
 
 /************************* TESTING **************************** */

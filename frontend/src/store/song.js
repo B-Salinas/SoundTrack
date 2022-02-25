@@ -28,6 +28,8 @@ const remove = (song) => ({
 })
 
 
+
+
 // thunk 
 export const getSongs = () => async dispatch => {
   const response = await csrfFetch(`/api/songs`);
@@ -45,7 +47,8 @@ export const uploadSong = (album_id, song_title, img_url, audio_url) => async di
       album: album_id,
       title: song_title,
       img: img_url,
-      audio: audio_url })
+      audio: audio_url 
+    })
   });
 
   if (response.ok) {
@@ -56,17 +59,18 @@ export const uploadSong = (album_id, song_title, img_url, audio_url) => async di
   }
 };
 
+
 const initialState = { allSongs: [] };
 
 // reducer
 const songsReducer = (state = initialState, action) => {
+  let newState;
   switch (action.type) {
-    case LOAD: {
+    case LOAD:
       const allSongs = [...action.songs];
       return {
         allSongs
       };
-    }
     default:
       return state;
   }

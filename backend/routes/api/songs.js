@@ -25,7 +25,7 @@ router.get('/', asyncHandler(async (req, res) => {
 // POST A SPECIFIC SONG
 // TODO: ADD USER AUTH MIDDLEWARE
 router.post('/', asyncHandler(async (req, res) => {
-  const { album, title, img, audio } = req.body;
+  const { album, title, img, audio } = req.body; // req.body has to do with the front end
   try {
     const newSong = await Song.create({
       album_id: album,

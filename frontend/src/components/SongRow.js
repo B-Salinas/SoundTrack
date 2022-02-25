@@ -9,6 +9,7 @@ import {
   Image,
  } from '@chakra-ui/react'
 
+import LikeButton from './LikeButton';
 import { StarIcon } from '@chakra-ui/icons';
 
 import './stylesheets/SongCollection.css';
@@ -96,7 +97,7 @@ function SongRow() {
                 Service and Sacrifice
               </Box>
               <Box>
-                <IconButton icon={<StarIcon />}>  </IconButton>
+                <LikeButton /> 
               </Box>
               <Box display='flex' mt='2' alignItems='center'>
                 <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803505/audio/service-and-sacrifice_w9xrfh.mp3"}>
@@ -118,7 +119,7 @@ function SongRow() {
                 Battle of the Heros
               </Box>
               <Box>
-                <IconButton icon={<StarIcon />}>  </IconButton>
+                <LikeButton /> 
               </Box>
               <Box display='flex' mt='2' alignItems='center'>
                 <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803931/audio/battle-of-the-heros_sgt5iu.mp3"}>
@@ -140,7 +141,7 @@ function SongRow() {
                 Dreaming of You
               </Box>
               <Box>
-                <IconButton icon={<StarIcon />}>  </IconButton> 
+                <LikeButton /> 
               </Box>
               <Box display='flex' mt='2' alignItems='center'>
                 <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803511/audio/dreaming-of-you_tmyfkk.mp3"}>
