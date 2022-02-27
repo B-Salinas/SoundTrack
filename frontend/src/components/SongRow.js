@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { 
+import {
   Box,
   Container,
   HStack,
   IconButton,
   Flex,
   Image,
- } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 
 import LikeButton from './LikeButton';
 import { StarIcon } from '@chakra-ui/icons';
 
+import { getSongs } from '../store/song';
 import './stylesheets/SongCollection.css';
 
 function SongRow() {
+  const dispatch = useDispatch();
+  const allSongs = useSelector(state => state.songs.allSongs);
 
-  
 
+  useEffect(() => {
+    dispatch(getSongs());
+  }, [getSongs]);
 
 
 
@@ -80,7 +86,27 @@ function SongRow() {
     //     </div>
     //   </div>
     // </div>
-    <> 
+
+
+
+    <>
+      {
+        // // example code to display songs dynamically:
+        // allSongs.map((song, idx) => {
+        //   // doing 3 songs for now b/c that's what works
+        //   if (idx === 1 || idx === 11 || idx === 21) {
+        //     return (
+        //       <div>
+        //         <h1>Album: {song.Album.album_title}</h1>
+        //         <div>Album img url: {song.Album.img_url}</div>
+        //         <h2>Song title: {song.song_title}</h2>
+        //         <div>Song url: {song.audio_url}</div>
+        //       </div>
+        //     )
+        //   }
+        //   return null;
+        // })
+      }
       <Container maxW='container.xl'>
 
         <HStack>
@@ -97,7 +123,7 @@ function SongRow() {
                 Service and Sacrifice
               </Box>
               <Box>
-                <LikeButton /> 
+                <LikeButton />
               </Box>
               <Box display='flex' mt='2' alignItems='center'>
                 <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803505/audio/service-and-sacrifice_w9xrfh.mp3"}>
@@ -105,7 +131,7 @@ function SongRow() {
                 </audio>
               </Box>
             </Box>
-          </Box> 
+          </Box>
 
           <Box minW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
             <Image w='100%' h='100%' src='https://res.cloudinary.com/soundtrack-2/image/upload/w_500,h_500/v1619985027/images/star-wars-revenge-of-the-sith_solvex.jpg' alt='Battle of the Heros' />
@@ -119,7 +145,7 @@ function SongRow() {
                 Battle of the Heros
               </Box>
               <Box>
-                <LikeButton /> 
+                <LikeButton />
               </Box>
               <Box display='flex' mt='2' alignItems='center'>
                 <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803931/audio/battle-of-the-heros_sgt5iu.mp3"}>
@@ -141,7 +167,7 @@ function SongRow() {
                 Dreaming of You
               </Box>
               <Box>
-                <LikeButton /> 
+                <LikeButton />
               </Box>
               <Box display='flex' mt='2' alignItems='center'>
                 <audio controls src={"https://res.cloudinary.com/soundtrack-2/video/upload/v1619803511/audio/dreaming-of-you_tmyfkk.mp3"}>
@@ -153,12 +179,12 @@ function SongRow() {
 
         </HStack>
 
-        
 
-        
+
+
 
       </Container>
-      
+
     </>
   )
 };
@@ -183,4 +209,3 @@ export default SongRow;
 //     </Box>
 //   </Box>
 // </Box>
-

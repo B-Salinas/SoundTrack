@@ -11,13 +11,13 @@ import { likeSong, unlikeSong } from '../store/session';
 function LikeButton({ songId }) {
 
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.session.user.id);
-    const userLikes = useSelector(state => state.session.user.likes);
+    const userId = useSelector(state => state.session.user?.id);
+    const userLikes = useSelector(state => state.session.user?.likes);
 
-    const [ like, setLike ] = useState('black.500');
+    const [like, setLike] = useState('black.500');
 
     useEffect(() => {
-        const likedSong = userLikes.find(like => like.song_id === songId);
+        const likedSong = userLikes?.find(like => like.song_id === songId);
         if (likedSong) {
             setLike('red.500');
         }
@@ -35,7 +35,7 @@ function LikeButton({ songId }) {
 
     return (
         <>
-            <IconButton color={like} icon={<StarIcon />} onClick={handleLike}>  </IconButton> 
+            <IconButton color={like} icon={<StarIcon />} onClick={handleLike}>  </IconButton>
         </>
     )
 }
