@@ -43,11 +43,11 @@ export const getSongs = () => async dispatch => {
 export const uploadSong = (album_id, song_title, img_url, audio_url) => async dispatch => {
   const response = await csrfFetch(`/api/songs`, {
     method: 'POST',
-    body: JSON.stringify({ 
+    body: JSON.stringify({
       album: album_id,
       title: song_title,
       img: img_url,
-      audio: audio_url 
+      audio: audio_url
     })
   });
 
@@ -67,10 +67,9 @@ const songsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case LOAD:
-      const allSongs = [...action.songs];
-      return {
-        allSongs
-      };
+      newState = Object.assign({}, state);
+      newState.allSongs = action.songs;
+      return newState;
     default:
       return state;
   }

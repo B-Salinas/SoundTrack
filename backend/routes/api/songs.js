@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { Song } = require('../../db/models');
+const { Song, Album } = require('../../db/models');
 // TODO: IMPORT BACKEND AUTHENTICATION MIDDLEWARE 'requireAuth' FOR 
 // USER FOR SENSITIVE API ROUTES (POST / PATCH / DELETE)
 
@@ -11,7 +11,7 @@ const router = express.Router();
 
 // GET ALL SONGS
 router.get('/', asyncHandler(async (req, res) => {
-  const songs = await Song.findAll();
+  const songs = await Song.findAll({ include: [Album] });
   return res.json(songs);
 }));
 
