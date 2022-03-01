@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { Song, Album } = require('../../db/models');
+const { Song, Album, Like, Comment } = require('../../db/models');
 // TODO: IMPORT BACKEND AUTHENTICATION MIDDLEWARE 'requireAuth' FOR 
 // USER FOR SENSITIVE API ROUTES (POST / PATCH / DELETE)
 
@@ -15,12 +15,13 @@ router.get('/', asyncHandler(async (req, res) => {
   return res.json(songs);
 }));
 
-// MAYBE TODO: ADD LOGIC FOR GETTING AMOUNT OF LIKES OF A SONG
 // GET A SPECIFIC SONG
-// router.get('/:id', asyncHandler(async function (req, res) {
-//   const song = await Song.findOne(req.params.id);
-//   return res.json(song);
-// }));
+router.get('/:id', asyncHandler(async function (req, res) {
+  const song = await Song.findByPk(req.params.id, {
+    include: [Like, Comment]
+  });
+  return res.json(song);
+}));
 
 // POST A SPECIFIC SONG
 // TODO: ADD USER AUTH MIDDLEWARE

@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth.js');
-const { User, Like, Follow } = require('../../db/models');
+const { User, Like, Follow, Album } = require('../../db/models');
 
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -44,6 +44,11 @@ router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
       user_id: user.id
     }
   });
+  const albums = await Album.findAll({
+    where: {
+      user_id: user.id
+    }
+  });
 
   if (!user) {
     const err = new Error('Login failed');
@@ -56,7 +61,7 @@ router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
   await setTokenCookie(res, user);
 
   return res.json({
-    user, likes, follows
+    user, likes, follows, albums
   });
 }));
 
@@ -80,10 +85,16 @@ router.get('/', restoreUser, async (req, res) => {
         user_id: user.id
       }
     });
+    const albums = await Album.findAll({
+      where: {
+        user_id: user.id
+      }
+    });
     return res.json({
       user: user.toSafeObject(), // will return the session user as JSON under the key of user
       likes,
-      follows
+      follows,
+      albums
     });
   } else {
     return res.json({}); // will return a JSON with an empty object
