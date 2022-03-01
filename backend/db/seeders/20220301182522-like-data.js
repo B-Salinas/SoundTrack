@@ -8,9 +8,10 @@ const numLikes = faker.mersenne.rand(22, 176);
 while (randomLikeSeed.length !== numLikes) {
   const userId = faker.mersenne.rand(1, 9);
   const songId = faker.mersenne.rand(1, 23);
+  const key = `${userId} : ${songId}`;
 
-  if (!organizedLikes.has(`${userId} : ${songId}`)) {
-    organizedLikes.add(`${userId} : ${songId}`);
+  if (!organizedLikes.has(key)) {
+    organizedLikes.add(key);
     randomLikeSeed.push({
       song_id: songId,
       user_id: userId,
