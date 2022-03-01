@@ -4,7 +4,7 @@ const { ValidatorsImpl } = require("express-validator/src/chain");
 const { Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
 
-// const { Like } = require('./index.js');
+const { Like } = require('./');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -31,19 +31,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    hashedPassword: { 
+    hashedPassword: {
       type: DataTypes.STRING.BINARY,
       allowNull: false,
       validate: {
         len: [60, 60]
       },
-     },
-    }, 
+    },
+  },
     {
       defaultScope: {
         attributes: {
           exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt'],
-        }, 
+        },
       },
       scopes: {
         currentUser: {
@@ -55,11 +55,11 @@ module.exports = (sequelize, DataTypes) => {
           attributes: {},
         },
       },
-  });
+    });
 
-  User.prototype.toSafeObject = function() {
-    const { id, username, email } = this;
-    const user = { id, username, email };
+  User.prototype.toSafeObject = function () {
+    const { id, username, email, profilePic, createdAt, updatedAt } = this;
+    const user = { id, username, email, profilePic, createdAt, updatedAt };
     return user;
   };
 
@@ -71,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope('currentUser').findByPk(id);
   };
 
-  User.login = async function({ credential, password }) {
+  User.login = async function ({ credential, password }) {
     const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
@@ -82,11 +82,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
     if (user && user.validatePassword(password)) {
-      return  await User.scope('currentUser').findByPk(user.id);
+      return await User.scope('currentUser').findByPk(user.id, {
+        include: Like
+      });
     }
   };
-  
-  User.signup = async function({ username, email, password }) {
+
+  User.signup = async function ({ username, email, password }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
@@ -95,8 +97,8 @@ module.exports = (sequelize, DataTypes) => {
     });
     return await User.scope('currentUser').findByPk(user.id);
   };
-  
-  User.associate = function(models) {
+
+  User.associate = function (models) {
     User.hasMany(models.Album, { foreignKey: 'user_id' });
     User.hasMany(models.Like, { foreignKey: 'user_id' });
     User.hasMany(models.Comment, { foreignKey: 'user_id' });

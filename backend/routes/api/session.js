@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth.js');
-const { User, Like } = require('../../db/models');
+const { User, Like, Follow } = require('../../db/models');
 
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -32,29 +32,33 @@ const validateLogin = [
 
 // Login 
 router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
-    const { credential, password } = req.body;
-    const user = await User.login({ credential, password });
-    const likes = await Like.findAll({
-      where: {
-        user_id: user.id
-      }
-    });
-
-    if (!user) {
-      const err = new Error('Login failed');
-      err.status = 401;
-      err.title = 'Login failed';
-      err.errors = ['The provided credentials were invalid.'];
-      return next(err);
+  const { credential, password } = req.body;
+  const user = await User.login({ credential, password });
+  const likes = await Like.findAll({
+    where: {
+      user_id: user.id
     }
+  });
+  const follows = await Follow.findAll({
+    where: {
+      user_id: user.id
+    }
+  });
 
-    await setTokenCookie(res, user);
+  if (!user) {
+    const err = new Error('Login failed');
+    err.status = 401;
+    err.title = 'Login failed';
+    err.errors = ['The provided credentials were invalid.'];
+    return next(err);
+  }
 
-    return res.json({
-      user, likes
-    });
-  }),
-);
+  await setTokenCookie(res, user);
+
+  return res.json({
+    user, likes, follows
+  });
+}));
 
 // Logout 
 router.delete('/', (_req, res) => {
@@ -71,9 +75,15 @@ router.get('/', restoreUser, async (req, res) => {
         user_id: user.id
       }
     });
+    const follows = await Follow.findAll({
+      where: {
+        user_id: user.id
+      }
+    });
     return res.json({
       user: user.toSafeObject(), // will return the session user as JSON under the key of user
-      likes
+      likes,
+      follows
     });
   } else {
     return res.json({}); // will return a JSON with an empty object
