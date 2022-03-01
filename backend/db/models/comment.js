@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define('Comment', {
     user_id: {
-      type:DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'Users' },
     },
@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       references: { model: 'Songs' },
     },
     content: {
-      type: DataTypes.STRING(250),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   }, {});
-  Comment.associate = function(models) {
+  Comment.associate = function (models) {
     Comment.belongsTo(models.User, { foreignKey: 'user_id' });
     Comment.belongsTo(models.Song, { foreignKey: 'song_id' });
   };

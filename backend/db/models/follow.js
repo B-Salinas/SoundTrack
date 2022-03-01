@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       references: { model: 'Users' },
     },
   }, {});
-  Follow.associate = function(models) {
+  Follow.associate = function (models) {
     Follow.belongsTo(models.User, {
       as: 'User',
       foreignKey: 'user_id',

@@ -16,9 +16,9 @@ const followsRouter = require('./follows.js');
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/songs', songsRouter);
-// router.use('/comments', commentsRouter);
+router.use('/comments', commentsRouter);
 router.use('/likes', likesRouter);
-// router.use('/follows', followsRouter);
+router.use('/follows', followsRouter);
 
 /************************* TESTING **************************** */
 // will test the setTokenCookie function by getting the demo user and called setTokenCookie
