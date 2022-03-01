@@ -43,24 +43,24 @@ export const login = (userData) => async (dispatch) => {
       password,
     }),
   });
-  const { user, likes } = await response.json();
+  const { user, likes, follows, albums } = await response.json();
   if (user) {
-    dispatch(setUser({ ...user, likes }));
+    dispatch(setUser({ ...user, likes, follows, albums }));
   } else {
     dispatch(setUser(null))
   }
-  return response; 
+  return response;
 };
 
 export const restoreUser = () => async dispatch => {
   const response = await csrfFetch('/api/session');
-  const { user, likes } = await response.json();
+  const { user, likes, follows, albums } = await response.json();
   if (user) {
-    dispatch(setUser({ ...user, likes }));
+    dispatch(setUser({ ...user, likes, follows, albums }));
   } else {
     dispatch(setUser(null))
   }
-  return response; 
+  return response;
 };
 
 export const signup = (user) => async (dispatch) => {
@@ -134,7 +134,7 @@ const sessionReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.user.likes.push(action.song)
       return newState;
-    case UNLIKE: 
+    case UNLIKE:
       newState = Object.assign({}, state);
       newState.user.likes = state.user.likes.filter((like) => like.id !== action.song)
       return newState;
