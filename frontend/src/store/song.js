@@ -59,6 +59,21 @@ export const uploadSong = (album_id, song_title, img_url, audio_url) => async di
   }
 };
 
+export const deleteSong = (songId) => async (dispatch) => {
+  const response = await csrfFetch('/api/songs', {
+    method: 'DELETE',
+    body: JSON.stringify({
+      song_id: songId
+    })
+  });
+
+  if (response.ok) {
+    // TODO: figure out what happens after song is deleted
+    const message = await response.json();
+    console.log(message);
+  }
+};
+
 
 const initialState = { allSongs: [] };
 
