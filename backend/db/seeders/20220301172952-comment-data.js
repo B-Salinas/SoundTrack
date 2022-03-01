@@ -7,7 +7,7 @@ const numComments = faker.mersenne.rand(22, 45);   // <--- generate this many co
 for (let i = 0; i < numComments; i++) {
   randomCommentSeed.push({
     user_id: faker.mersenne.rand(1, 9),
-    song_id: faker.mersenne.rand(1, 22),
+    song_id: faker.mersenne.rand(1, 23),
     content: faker.lorem.sentences(),
     createdAt: new Date(),
     updatedAt: new Date()
