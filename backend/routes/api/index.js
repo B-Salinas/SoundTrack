@@ -16,7 +16,7 @@ const followsRouter = require('./follows.js');
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/songs', songsRouter);
-// router.use('/comments', commentsRouter);
+router.use('/comments', commentsRouter);
 router.use('/likes', likesRouter);
 // router.use('/follows', followsRouter);
 
