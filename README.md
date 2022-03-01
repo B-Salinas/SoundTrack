@@ -23,7 +23,7 @@ Check out the [wiki](https://github.com/B-Salinas/SoundTrack/wiki) for more info
 - **built with [express](https://expressjs.com/)**
 - [express-session](https://www.npmjs.com/package/express-session)
 - [express-validator](https://www.npmjs.com/package/express-validator)
-- [faker](https://www.npmjs.com/package/faker) for generating large amounts of fake data
+- [faker](https://www.npmjs.com/package/@faker-js/faker) for generating large amounts of fake data
 - **uses [postgreSQL](https://www.postgresql.org/) database**
 - [sequelize](https://www.npmjs.com/package/sequelize) / [sequelize-cli](https://www.npmjs.com/package/sequelize-cli)
 
