@@ -43,9 +43,9 @@ export const login = (userData) => async (dispatch) => {
       password,
     }),
   });
-  const { user, likes, follows, albums } = await response.json();
+  const { user, likes, follows, followers, albums } = await response.json();
   if (user) {
-    dispatch(setUser({ ...user, likes, follows, albums }));
+    dispatch(setUser({ ...user, Likes: likes, Following: follows, Followers: followers, Albums: albums }));
   } else {
     dispatch(setUser(null))
   }
@@ -54,9 +54,9 @@ export const login = (userData) => async (dispatch) => {
 
 export const restoreUser = () => async dispatch => {
   const response = await csrfFetch('/api/session');
-  const { user, likes, follows, albums } = await response.json();
+  const { user, likes, follows, followers, albums } = await response.json();
   if (user) {
-    dispatch(setUser({ ...user, likes, follows, albums }));
+    dispatch(setUser({ ...user, Likes: likes, Following: follows, Followers: followers, Albums: albums }));
   } else {
     dispatch(setUser(null))
   }

@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       defaultScope: {
         attributes: {
-          exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt'],
+          exclude: ['hashedPassword'],
         },
       },
       scopes: {
@@ -102,7 +102,9 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Album, { foreignKey: 'user_id' });
     User.hasMany(models.Like, { foreignKey: 'user_id' });
     User.hasMany(models.Comment, { foreignKey: 'user_id' });
-    User.hasMany(models.Follow, { foreignKey: 'user_id' });
+    // aliasing self-refernce needs to be on parent
+    User.hasMany(models.Follow, { foreignKey: 'user_id', as: 'Following' });
+    User.hasMany(models.Follow, { foreignKey: 'followed_user_id', as: 'Followers' });
   };
 
   return User;

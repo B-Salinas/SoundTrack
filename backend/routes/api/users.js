@@ -4,8 +4,9 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Like, Follow, Comment, Album } = require('../../db/models');
 const { handleValidationErrors } = require('../../utils/validation');
+const user = require('../../db/models/user');
 
 const router = express.Router();
 
@@ -50,16 +51,12 @@ router.post('', validateSignup, asyncHandler(async (req, res) => {
 // get a user 
 router.get("/:id", asyncHandler((async (req, res) => {
   let user_id = parseInt(req.params.id, 10);
-  let user = await User.getUserById(user_id);
+  let user = await User.findByPk(user_id, {
+    include: [Like, Comment, Album, { model: Follow, as: 'Followers' }, { model: Follow, as: 'Following' }]
+  });
 
-  console.log(user);
-  return res.json(user);
+  // console.log({ ...user, following, followers });
+  return res.json({ user });
 })));
-
-// TODO: GET ALL FOLLOWERS OF A USER
-
-// TODO: GET ALL FOLLOWS OF A USER
-// (get all the people that the given user
-// is following)
 
 module.exports = router;

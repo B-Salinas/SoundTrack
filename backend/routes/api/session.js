@@ -44,6 +44,11 @@ router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
       user_id: user.id
     }
   });
+  const followers = await Follow.findAll({
+    where: {
+      followed_user_id: user.id
+    }
+  });
   const albums = await Album.findAll({
     where: {
       user_id: user.id
@@ -61,7 +66,7 @@ router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
   await setTokenCookie(res, user);
 
   return res.json({
-    user, likes, follows, albums
+    user, likes, follows, followers, albums
   });
 }));
 
@@ -85,6 +90,11 @@ router.get('/', restoreUser, async (req, res) => {
         user_id: user.id
       }
     });
+    const followers = await Follow.findAll({
+      where: {
+        followed_user_id: user.id
+      }
+    });
     const albums = await Album.findAll({
       where: {
         user_id: user.id
@@ -94,6 +104,7 @@ router.get('/', restoreUser, async (req, res) => {
       user: user.toSafeObject(), // will return the session user as JSON under the key of user
       likes,
       follows,
+      followers,
       albums
     });
   } else {
