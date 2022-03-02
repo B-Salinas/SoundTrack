@@ -3,7 +3,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 
-const { Like } = require('../../db/models/');
+const { Like, Song } = require('../../db/models/');
 const { requireAndVerifyAuth } = require('../../utils/auth')
 
 // TODO: CREATE ROUTER
@@ -11,9 +11,18 @@ const router = express.Router();
 
 /************************************************************** */
 
+// GET LIKES FOR A SONG
+router.get('/song/:songId', asyncHandler(async (req, res) => {
+    const { songId } = req.params;
+    const song = await Song.findByPk(Number(songId), {
+        include: [Like]
+    });
+    return res.json(song.Likes.length);
+}));
+
 // TODO: POST A LIKE
 // ...or "like a song"
-router.post('/', requireAndVerifyAuth, asyncHandler( async (req, res) => {
+router.post('/', requireAndVerifyAuth, asyncHandler(async (req, res) => {
     const userId = req.user.id;
     const { songId } = req.body;
     try {
@@ -42,7 +51,7 @@ router.post('/', requireAndVerifyAuth, asyncHandler( async (req, res) => {
 // ...or "unlike a song"
 router.delete('/', requireAndVerifyAuth, asyncHandler(async (req, res) => {
     const userId = req.user.id;
-    const { songId } = req.body; 
+    const { songId } = req.body;
     try {
         const findLike = await Like.findOne({
             where: {
@@ -50,7 +59,7 @@ router.delete('/', requireAndVerifyAuth, asyncHandler(async (req, res) => {
                 user_id: userId
             }
         });
-        const likedSongId = findLike.id 
+        const likedSongId = findLike.id
         await findLike.destroy();
         return res.json(likedSongId)
     } catch (e) {
@@ -60,8 +69,3 @@ router.delete('/', requireAndVerifyAuth, asyncHandler(async (req, res) => {
 
 // TODO: EXPORT ROUTER
 module.exports = router;
-
-
-
-
-

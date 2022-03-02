@@ -1,16 +1,31 @@
+import listShuffler from '../utils/listShuffler';
 import { csrfFetch } from './csrf';
 
 // variables
 const LOAD = 'songs/LOAD';
+const LOAD_ONE = 'songs/LOAD_ONE';
+const LOAD_FEATURED = 'songs/LOAD_FEATURED';
 const UPLOAD = 'songs/UPLOAD';
 const UPDATE = 'songs/UPDATE';
 const REMOVE = 'songs/DELETE';
+const ADD_COMMENT = 'songs/ADD_COMMENT';
+const REMOVE_COMMENT = 'songs/REMOVE_COMMENT';
 
 // action creator
 const load = (songs) => ({
   type: LOAD,
   songs,
 });
+
+const loadOne = (song) => ({
+  type: LOAD_ONE,
+  song
+});
+
+const loadFeatured = (songs) => ({
+  type: LOAD_FEATURED,
+  songs
+})
 
 const upload = (song) => ({
   type: UPLOAD,
@@ -20,18 +35,28 @@ const upload = (song) => ({
 const update = (song) => ({
   type: UPDATE,
   song,
-})
+});
 
 const remove = (song) => ({
   type: REMOVE,
   song,
-})
+});
+
+const addComment = (comment) => ({
+  type: ADD_COMMENT,
+  comment
+});
+
+const removeComment = (commentId) => ({
+  type: REMOVE_COMMENT,
+  commentId
+});
 
 
 
 
 // thunk 
-export const getSongs = () => async dispatch => {
+export const getSongs = () => async (dispatch) => {
   const response = await csrfFetch(`/api/songs`);
 
   if (response.ok) {
@@ -40,7 +65,26 @@ export const getSongs = () => async dispatch => {
   }
 };
 
-export const uploadSong = (album_id, song_title, img_url, audio_url) => async dispatch => {
+// TEMP THUNK?
+export const getFeaturedSongs = () => async (dispatch) => {
+  const response = await csrfFetch('/api/songs');
+
+  if (response.ok) {
+    const songs = await response.json();
+    dispatch(loadFeatured(listShuffler(songs, 3)));
+  }
+};
+
+export const getSong = (songId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/songs/${songId}`);
+
+  if (response.ok) {
+    const song = await response.json();
+    dispatch(loadOne(song));
+  }
+};
+
+export const uploadSong = (album_id, song_title, img_url, audio_url) => async (dispatch) => {
   const response = await csrfFetch(`/api/songs`, {
     method: 'POST',
     body: JSON.stringify({
@@ -74,8 +118,46 @@ export const deleteSong = (songId) => async (dispatch) => {
   }
 };
 
+export const postComment = (userId, songId, content) => async (dispatch) => {
+  const response = await csrfFetch('/api/comments', {
+    method: 'POST',
+    body: JSON.stringify({
+      userId,
+      songId,
+      content
+    })
+  });
 
-const initialState = { allSongs: [] };
+  if (response.ok) {
+    const comment = await response.json();
+    dispatch(addComment(comment));
+  }
+};
+
+export const deleteComment = (userId, commentId) => async (dispatch) => {
+  const response = await csrfFetch('/api/comments', {
+    method: 'DELETE',
+    body: JSON.stringify({
+      userId,
+      commentId
+    })
+  });
+
+  if (response.ok) {
+    dispatch(removeComment(commentId));
+  }
+};
+
+export const getLikes = (songId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/likes/song/${songId}`);
+
+  if (response.ok) {
+    return await response.json();
+  }
+};
+
+
+const initialState = { allSongs: [], currentSong: null, featuredSongs: null };
 
 // reducer
 const songsReducer = (state = initialState, action) => {
@@ -84,6 +166,22 @@ const songsReducer = (state = initialState, action) => {
     case LOAD:
       newState = Object.assign({}, state);
       newState.allSongs = action.songs;
+      return newState;
+    case LOAD_ONE:
+      newState = Object.assign({}, state);
+      newState.currentSong = action.song;
+      return newState;
+    case LOAD_FEATURED:
+      newState = Object.assign({}, state);
+      newState.featuredSongs = action.songs;
+      return newState;
+    case ADD_COMMENT:
+      newState = Object.assign({}, state);
+      newState.currentSong.Comments.push(action.comment);
+      return newState;
+    case REMOVE_COMMENT:
+      newState = Object.assign({}, state);
+      newState.currentSong.Comments = state.currentSong.Comments.filter((comment) => comment.id !== action.commentId);
       return newState;
     default:
       return state;

@@ -55,8 +55,7 @@ router.get("/:id", asyncHandler((async (req, res) => {
     include: [Like, Comment, Album, { model: Follow, as: 'Followers' }, { model: Follow, as: 'Following' }]
   });
 
-  // console.log({ ...user, following, followers });
-  return res.json({ user });
+  return res.json(user);
 })));
 
 module.exports = router;
