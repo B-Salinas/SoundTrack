@@ -1,4 +1,3 @@
-import { useRangeSlider } from '@chakra-ui/react';
 import { csrfFetch } from './csrf';
 
 // just variables 

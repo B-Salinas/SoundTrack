@@ -13,17 +13,17 @@ import {
 import LikeButton from './LikeButton';
 import { StarIcon } from '@chakra-ui/icons';
 
-import { getSongs } from '../store/song';
+import { getFeaturedSongs } from '../store/song';
 import './stylesheets/SongCollection.css';
 
 function SongRow() {
   const dispatch = useDispatch();
-  const allSongs = useSelector(state => state.songs.allSongs);
+  const featuredSongs = useSelector(state => state.songs.featuredSongs);
 
 
   useEffect(() => {
-    dispatch(getSongs());
-  }, [getSongs]);
+    dispatch(getFeaturedSongs());
+  }, [dispatch]);
 
 
 
@@ -90,28 +90,39 @@ function SongRow() {
 
 
     <>
-      {
-        // // example code to display songs dynamically:
-        // allSongs.map((song, idx) => {
-        //   // doing 3 songs for now b/c that's what works
-        //   if (idx === 1 || idx === 11 || idx === 21) {
-        //     return (
-        //       <div>
-        //         <h1>Album: {song.Album.album_title}</h1>
-        //         <div>Album img url: {song.Album.img_url}</div>
-        //         <h2>Song title: {song.song_title}</h2>
-        //         <div>Song url: {song.audio_url}</div>
-        //       </div>
-        //     )
-        //   }
-        //   return null;
-        // })
-      }
       <Container maxW='container.xl'>
 
         <HStack>
+          {featuredSongs &&
+            // example code to display songs dynamically:
+            featuredSongs.map((song) => {
+              return (
+                <Box key={`${song.img_url}-${song.song_title}`} minW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+                  <Image w='100%' h='100%' src={song.img_url} alt={song.song_title} />
+                  <Box p='4'>
+                    <Box display='flex' alignItems='baseline'>
+                      <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
+                        {song.Album.album_title}
+                      </Box>
+                    </Box>
+                    <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight'>
+                      {song.song_title}
+                    </Box>
+                    <Box>
+                      <LikeButton songId={song.id} />
+                    </Box>
+                    <Box display='flex' mt='2' alignItems='center'>
+                      <audio controls src={song.audio_url}>
+                        <source></source>
+                      </audio>
+                    </Box>
+                  </Box>
+                </Box>
+              )
+            })
+          }
 
-          <Box minW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+          {/* <Box minW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
             <Image w='100%' h='100%' src='https://res.cloudinary.com/soundtrack-2/image/upload/w_500,h_500/v1619985016/images/legend-of-korra_hmlauy.jpg' alt='Service and Sacrifice' />
             <Box p='4'>
               <Box display='flex' alignItems='baseline'>
@@ -175,7 +186,7 @@ function SongRow() {
                 </audio>
               </Box>
             </Box>
-          </Box>
+          </Box> */}
 
         </HStack>
 
