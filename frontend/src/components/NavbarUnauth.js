@@ -12,7 +12,6 @@ function NavbarUnauth() {
 
   const handleLogin = () => {
     // dispatch(login());
-
     history.push('/login');
   }
 

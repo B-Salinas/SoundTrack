@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { 
   Box,
@@ -13,6 +13,9 @@ import {
 
 import { FaSoundcloud } from 'react-icons/fa';
 
+import LogInButton from './LogInButton';
+import LogOutButton from './LogOutButton';
+import CreateAccountButton from './CreateAccountButton';
 
 // import NavbarAuth from './NavbarAuth';
 // import NavbarUnauth from './NavbarUnauth';
@@ -20,10 +23,11 @@ import { FaSoundcloud } from 'react-icons/fa';
 import './stylesheets/Navbar.css';
 
 function Navbar() {
-  // const sessionUser = useSelector(state => state.session.user);
-  
- 
+  const sessionUser = useSelector(state => state.session.user);
+  console.log(sessionUser);
+  console.log(sessionUser?.username);
 
+   
   return (
     // <div className="navbar-container">
     //   <div className="navbar-logo">
@@ -61,15 +65,12 @@ function Navbar() {
           {/* I have to incorporate that terinary symbol so it knows we are logged in */}
           <GridItem w='100%' h='20'>
             <Center>
-              <Button size='sm' mt={6} colorScheme='black' variant='outline'>
-                Log In
-              </Button>
+              {sessionUser ? null : <LogInButton />}
             </Center>
           </GridItem>
           <GridItem w='100%' h='20'>
-            <Button size='sm' mt={6} colorScheme={'orange'} >
-              Create an Account
-            </Button>
+            {sessionUser ? <LogOutButton /> : <CreateAccountButton size={'sm'} mt={6} />}
+            
           </GridItem>
           <GridItem w='100%' h='20' />
         </Grid>

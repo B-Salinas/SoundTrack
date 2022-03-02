@@ -23,11 +23,6 @@ const validateLogin = [
   handleValidationErrors,
 ];
 
-
-
-
-
-
 /************************ ROUTES ***************************/
 
 // Login 

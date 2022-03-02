@@ -9,6 +9,8 @@ import {
   Text
 } from '@chakra-ui/react'
 
+import CreateAccountButton from './CreateAccountButton';
+
 import './stylesheets/Hero.css';
 
 function Hero() {
@@ -49,9 +51,7 @@ function Hero() {
         <GridItem rowSpan={1} colSpan={4} />
         <GridItem rowSpan={1} colSpan={2}>
           <Center>
-            <Button size='md' mt={2} colorScheme='orange'>
-              Create an Account
-            </Button>
+            <CreateAccountButton size='lg' mt={2} />
           </Center>
         </GridItem>
         <GridItem rowSpan={1} colSpan={4} />

@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 
 import { 
   Center,
@@ -8,6 +10,10 @@ import {
   Text,
  } from '@chakra-ui/react'
 
+import LogInButton from './LogInButton';
+import LogOutButton from './LogOutButton';
+import CreateAccountButton from './CreateAccountButton';
+
 // import { NavLink } from 'react-router-dom';
 
 // import { useHistory } from 'react-router-dom';
@@ -15,6 +21,9 @@ import {
 
 function AltSignIn() {
   // const history = useHistory();
+
+  const sessionUser = useSelector(state => state.session.user);
+
   return (
     // <div className="alt-container"> 
     //   <div className="alt-info">
@@ -58,25 +67,21 @@ function AltSignIn() {
         <GridItem rowSpan={1} colSpan={4} />
         <GridItem rowSpan={1} colSpan={2} >
           <Center>
-            <Button size='md' mt={2} colorScheme='orange'>
-              Create an Account
-            </Button>
+            <CreateAccountButton size={'md'} mt={2} />
           </Center>
         </GridItem>
         <GridItem rowSpan={1} colSpan={4} />
         <GridItem rowSpan={1} colSpan={3} />
-        <GridItem rowSpan={1} colSpan={2}  >
-          <Center>
-            <Text mt={4} ml={16} fontSize='xs' align='center'>  Already have an account? </Text>
-          </Center>
-        </GridItem>
-        <GridItem rowSpan={1} colSpan={1}  >
-          <Center>
-            <Button size='sm' mt={3} colorScheme='black' variant='outline'>
-              Log In
-            </Button>
-          </Center>
-        </GridItem>
+            <GridItem rowSpan={1} colSpan={2}  >
+              <Center>
+                <Text mt={4} ml={16} fontSize='xs' align='center'>  Already have an account? </Text>
+              </Center>
+            </GridItem>
+            <GridItem rowSpan={1} colSpan={1}  >
+              <Center>
+                <LogInButton />
+              </Center>
+            </GridItem>
         <GridItem rowSpan={1} colSpan={4} />
         <GridItem rowSpan={1} colSpan={10} />
       </Grid>
