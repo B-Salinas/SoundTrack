@@ -6,19 +6,15 @@ import * as sessionActions from "./store/session";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 
-// import Navigation from "./components/Navigation";
+import Navbar from './components/Navbar';
 import Discover from './components/Discover';
+import Explore from "./components/Explore";
+import Footer from './components/Footer';
 
-// import Hero from './components/Hero'
-// import Trending from './components/Trending';
-// import AltSignIn from './components/AltSignIn';
-// import SongCardTest from './components/SongCardTest';
-// import Explore from './components/Explore';
+
 import SongCollection from './components/SongCollection';
 
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import SongRow from "./components/SongRow";
+
 
 
 
@@ -39,15 +35,12 @@ function App() {
           <Route path='/' exact component={Discover} /> 
           <Route path="/login" component={LoginForm} />
           <Route path="/signup" component={SignupForm} />
-          <Route path="/explore" component={SongCollection} />
+          <Route path="/explore" component={Explore} />
         </Switch>
       )}
       <Footer />
     </>
   );
 }
-
-// render={() => (<LoginForm />)}
-// render={() => (<SignupForm />)}
 
 export default App;

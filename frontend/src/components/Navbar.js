@@ -29,52 +29,42 @@ function Navbar() {
 
    
   return (
-    // <div className="navbar-container">
-    //   <div className="navbar-logo">
-    //     <i className="fab fa-soundcloud" />
-    //   </div>
-    //   <div className="navbar-title">
-    //     <h3>SOUNDTRACK</h3>
-    //   </div>
-    //   <div className="navbar-links">
-    //     {sessionUser ? <NavbarAuth /> : <NavbarUnauth />}
-    //   </div>
-    // </div>
+
     <>
-    <Box bg='gray.100'> 
-        <Grid templateColumns='repeat(12, 1fr)' gap={2}>
-          <GridItem w='100%' h='20' />
-          <GridItem w='100%' h='20' >
-            <Center>
-              <Icon as={FaSoundcloud} boxSize={20} />
-            </Center>
-          </GridItem>
-          <GridItem w='100%' h='20'>
-            <Heading size='sm' mt={8}>
+      <Box bg='gray.100'> 
+          <Grid templateColumns='repeat(12, 1fr)' gap={2}>
+            <GridItem w='100%' h='20' />
+            <GridItem w='100%' h='20' >
               <Center>
-                SOUNDTRACK
+                <Icon as={FaSoundcloud} boxSize={20} />
               </Center>
-            </Heading>
-          </GridItem>
-          <GridItem w='100%' h='20' />
-          <GridItem w='100%' h='20' />
-          <GridItem w='100%' h='20' />
-          <GridItem w='100%' h='20' />
-          <GridItem w='100%' h='20' />
-          <GridItem w='100%' h='20' />
-          {/* I have to incorporate that terinary symbol so it knows we are logged in */}
-          <GridItem w='100%' h='20'>
-            <Center>
-              {sessionUser ? null : <LogInButton />}
-            </Center>
-          </GridItem>
-          <GridItem w='100%' h='20'>
-            {sessionUser ? <LogOutButton /> : <CreateAccountButton size={'sm'} mt={6} />}
-            
-          </GridItem>
-          <GridItem w='100%' h='20' />
-        </Grid>
-      </Box> 
+            </GridItem>
+            <GridItem w='100%' h='20'>
+              <Heading size='sm' mt={8}>
+                <Center>
+                  SOUNDTRACK
+                </Center>
+              </Heading>
+            </GridItem>
+            <GridItem w='100%' h='20' />
+            <GridItem w='100%' h='20' />
+            <GridItem w='100%' h='20' />
+            <GridItem w='100%' h='20' />
+            <GridItem w='100%' h='20' />
+            <GridItem w='100%' h='20' />
+            {/* I have to incorporate that terinary symbol so it knows we are logged in */}
+            <GridItem w='100%' h='20'>
+              <Center>
+                {sessionUser ? null : <LogInButton />}
+              </Center>
+            </GridItem>
+            <GridItem w='100%' h='20'>
+              {sessionUser ? <LogOutButton /> : <CreateAccountButton size={'sm'} mt={6} />}
+              
+            </GridItem>
+            <GridItem w='100%' h='20' />
+          </Grid>
+        </Box> 
     </>
   )
 };

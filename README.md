@@ -11,8 +11,8 @@ Check out the [wiki](https://github.com/B-Salinas/SoundTrack/wiki) for more info
 #### Front-End
 - React <div width="25" height="25"><i class="fab fa-react"></i></div>
 - Redux
-- CSS
-- Font Awesome
+- Chakra-UI
+- React Icons
 - Cloudinary
 
 [//]: # (- Hosted on Heroku)

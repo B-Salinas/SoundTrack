@@ -3,47 +3,22 @@ import { useSelector } from 'react-redux';
 
 
 import { 
+  Box,
   Center,
-  Button,
   Grid, 
   GridItem,
+  HStack,
   Text,
  } from '@chakra-ui/react'
 
 import LogInButton from './LogInButton';
-import LogOutButton from './LogOutButton';
 import CreateAccountButton from './CreateAccountButton';
-
-// import { NavLink } from 'react-router-dom';
-
-// import { useHistory } from 'react-router-dom';
 
 
 function AltSignIn() {
-  // const history = useHistory();
-
-  const sessionUser = useSelector(state => state.session.user);
 
   return (
-    // <div className="alt-container"> 
-    //   <div className="alt-info">
-    //     <div className="alt-title">
-    //       <p> Thanks for listening. Now join in.</p>
-    //     </div>
-    //     <div className="alt-text">
-    //       <p> Get on SoundTrack to connect with friends, share your tracks, and grow your audience. All for free.</p>
-    //     </div>
-    //   </div>
-    //   <div className="alt-register">
-    //     <NavLink to="/register">
-    //       <button className="alt-register-button"> Create Account </button>
-    //     </NavLink>
-    //   </div>
-    //   <div className="alt-signin">
-    //     <p className="alt-signin-text"> Already have an account? </p>
-    //     <button onClick={() => { history.push('/login') }} className="alt-signin-button"> Log In </button>
-    //   </div>
-    // </div>
+
     <>
       <Grid templateColumns='repeat(12, 1fr)' templateRows='repeat(6, 1fr)' gap={2} bg='gray.50' >
         <GridItem rowSpan={6} colSpan={1} bg='white'/>
@@ -72,17 +47,17 @@ function AltSignIn() {
         </GridItem>
         <GridItem rowSpan={1} colSpan={4} />
         <GridItem rowSpan={1} colSpan={3} />
-            <GridItem rowSpan={1} colSpan={2}  >
-              <Center>
-                <Text mt={4} ml={16} fontSize='xs' align='center'>  Already have an account? </Text>
-              </Center>
-            </GridItem>
-            <GridItem rowSpan={1} colSpan={1}  >
-              <Center>
-                <LogInButton />
-              </Center>
-            </GridItem>
-        <GridItem rowSpan={1} colSpan={4} />
+        <GridItem rowSpan={1} colSpan={4} justifyContent='center' alignContent='center' >
+          <HStack justifyContent='center' mr={10}>
+            <Box>
+              <Text mt={6} ml={16} fontSize='xs' align='center'>  Already have an account? </Text>
+            </Box>
+            <Box alignContent='center' >
+              <LogInButton />
+            </Box>
+          </HStack>
+        </GridItem>
+        <GridItem rowSpan={1} colSpan={3} />
         <GridItem rowSpan={1} colSpan={10} />
       </Grid>
     </>
