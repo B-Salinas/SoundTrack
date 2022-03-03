@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import {
   Button,
@@ -10,11 +11,19 @@ import {
 } from '@chakra-ui/react'
 
 import FeaturedSongs from './FeaturedSongs';
+import { getFeaturedSongs } from '../store/song';
 
 function Trending() {
+  const dispatch = useDispatch();
+
+  const shuffleFeaturedSongs = () => {
+    dispatch(getFeaturedSongs());
+  };
+
   return (
 
     <>
+
       <Grid templateColumns='repeat(12, 1fr)' templateRows='repeat(7, 1fr)' gap={2}>
         <GridItem rowSpan={6} colSpan={1} />
         <GridItem rowSpan={1} colSpan={10} mt={4} >
@@ -31,13 +40,14 @@ function Trending() {
         <GridItem rowSpan={1} colSpan={5} />
         <GridItem rowSpan={1} colSpan={2} >
           <Center>
-            <Button size='md' mt={2} colorScheme='gray'>
+            <Button onClick={shuffleFeaturedSongs} size='md' mt={2} colorScheme='gray'>
               Explore Trending Tracks
             </Button>
           </Center>
         </GridItem>
         <GridItem rowSpan={1} colSpan={5} />
       </Grid>
+
     </>
   );
 }
