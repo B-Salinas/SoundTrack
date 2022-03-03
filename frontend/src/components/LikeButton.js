@@ -2,13 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { 
-    Box, 
+import {
+    Box,
     HStack,
     IconButton
 } from '@chakra-ui/react'
 
-import { FaHeart } from 'react-icons/fa' 
+import { FaHeart } from 'react-icons/fa'
 
 import { likeSong, unlikeSong } from '../store/session';
 import { getLikes } from '../store/song';
@@ -50,15 +50,15 @@ function LikeButton({ songId }) {
     return (
         <>
             <HStack>
-                <IconButton 
-                    icon={<FaHeart />} 
+                <IconButton
+                    icon={<FaHeart />}
                     isRound
-                    size='sm' 
-                    color={like} 
-                    fontSize='15px' 
-                    onClick={handleLike}  
+                    size='sm'
+                    color={userId ? like : 'black.500'}
+                    fontSize='15px'
+                    onClick={handleLike}
                 />
-                <Box color={like}>
+                <Box color={userId ? like : 'black.500'}>
                     {numLikes}
                 </Box>
             </HStack>
