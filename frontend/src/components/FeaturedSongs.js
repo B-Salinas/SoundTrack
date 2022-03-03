@@ -8,7 +8,6 @@ import {
 
 import SongCard from './SongCard';
 import { getFeaturedSongs } from '../store/song';
-import './stylesheets/SongCollection.css';
 
 function FeaturedSongs() {
   const dispatch = useDispatch();
@@ -22,16 +21,16 @@ function FeaturedSongs() {
 
 
   return (
-  
+
     <>
-  
+
       <Container maxW='container.xl' centerContent >
         <HStack>
           {featuredSongs &&
             // example code to display songs dynamically:
             featuredSongs.map((song) => {
               return (
-                <SongCard song={song}/>
+                <SongCard song={song} />
               )
             })
           }

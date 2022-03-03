@@ -5,13 +5,11 @@ import { getSongs } from '../store/song';
 
 // import SongCardTest from './SongCardTest';
 
-import './stylesheets/SongCollection.css';
-
 function SongCollection() {
   const dispatch = useDispatch();
   // const sessionUser = useSelector(state => state.session.user);
   // const songs = useSelector(state => state.songs.allSongs);
-  
+
   useEffect(() => {
     dispatch(getSongs());
     // dispatch(uploadSong(1, 'random string', 'google.com', 'youtube.com'));
@@ -24,7 +22,7 @@ function SongCollection() {
   // if (!songs) {
   //   return null;
   // }
-  
+
 
   return (
     <div className="song-collection-container">

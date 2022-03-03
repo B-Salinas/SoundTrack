@@ -4,8 +4,6 @@ import * as sessionActions from '../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import './stylesheets/LoginForm.css';
-
 function LoginFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -33,10 +31,10 @@ function LoginFormPage() {
     const password = 'password';
 
     return dispatch(sessionActions.login({ credential, password }))
-    .catch(async (res) => {
+      .catch(async (res) => {
         // const data = await res.json();
       }
-    );
+      );
   };
 
 

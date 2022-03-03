@@ -4,14 +4,12 @@ import React from 'react';
 import {
   Button,
   Center,
-  Grid, 
+  Grid,
   GridItem,
   Text
 } from '@chakra-ui/react'
 
 import CreateAccountButton from './CreateAccountButton';
-
-import './stylesheets/Hero.css';
 
 function Hero() {
   return (
@@ -32,7 +30,7 @@ function Hero() {
       <Grid templateColumns='repeat(12, 5fr)' templateRows='repeat(5, 1fr)' gap={2}>
         <GridItem rowSpan={5} colSpan={1} />
         <GridItem rowSpan={1} colSpan={10} />
-        <GridItem rowSpan={5} colSpan={1}  />
+        <GridItem rowSpan={5} colSpan={1} />
         <GridItem rowSpan={1} colSpan={2} />
 
         <GridItem rowSpan={1} colSpan={6}>
@@ -42,7 +40,7 @@ function Hero() {
         </GridItem>
         <GridItem rowSpan={1} colSpan={2} />
         <GridItem rowSpan={1} colSpan={2} />
-        <GridItem rowSpan={1} colSpan={6}> 
+        <GridItem rowSpan={1} colSpan={6}>
           <Center>
             <Text align='center'>  Upload your first track and begin your journey. SoundTrack gives you the space to create, find your friends, and connect with other composers. </Text>
           </Center>
