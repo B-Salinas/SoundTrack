@@ -128,6 +128,7 @@ export const unlikeSong = (userId, songId) => async dispatch => {
 };
 
 export const followUser = (userId, followedUserId) => async (dispatch) => {
+  console.log('here')
   const response = await csrfFetch('/api/follows', {
     method: 'POST',
     body: JSON.stringify({
@@ -135,10 +136,13 @@ export const followUser = (userId, followedUserId) => async (dispatch) => {
       followedUserId
     })
   });
+  console.log('there')
 
   if (response.ok) {
     const followedUser = await response.json();
+    console.log('there')
     dispatch(follow(followedUser));
+    console.log('there')
   }
 };
 
