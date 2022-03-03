@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  Box,
   HStack,
   IconButton
 } from '@chakra-ui/react';
@@ -18,25 +17,18 @@ function FollowButton({ profileUserId }) {
 
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user?.id);
-  const userFollowing = useSelector(state => state.session.user?.Following);
+  const isFollowing = useSelector(state => state.session.user?.Following.find(following => following.followed_user_id === profileUserId));
 
-  const [follow, setFollow] = useState(UNFOLLOWED_COLOR);
+  const [follow, setFollow] = useState(isFollowing ? FOLLOWED_COLOR : UNFOLLOWED_COLOR);
 
-  useEffect(() => {
-    const isFollowing = userFollowing?.find(following => following.followed_user_id === profileUserId);
-    if (isFollowing) {
-      setFollow(FOLLOWED_COLOR);
-    }
-  }, [userFollowing, profileUserId]);
-
-  const handleFollow = async () => {
-    if (follow === UNFOLLOWED_COLOR) {
-      await dispatch(followUser(userId, profileUserId));
+  const handleFollow = () => {
+    if (follow === FOLLOWED_COLOR) {
+      dispatch(unfollowUser(userId, profileUserId));
     } else {
-      await dispatch(unfollowUser(userId, profileUserId));
+      dispatch(followUser(userId, profileUserId));
     }
 
-    setFollow(follow === UNFOLLOWED_COLOR ? FOLLOWED_COLOR : UNFOLLOWED_COLOR);
+    setFollow(follow === FOLLOWED_COLOR ? UNFOLLOWED_COLOR : FOLLOWED_COLOR);
   }
 
   const iconSwitch = () => {
@@ -55,7 +47,7 @@ function FollowButton({ profileUserId }) {
           icon={iconSwitch()}
           isRound
           size='sm'
-          color={!userId ? 'black.500' : follow}
+          color={userId ? follow : UNFOLLOWED_COLOR}
           fontSize='15px'
           onClick={handleFollow}
         />

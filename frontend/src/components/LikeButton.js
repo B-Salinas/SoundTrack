@@ -16,27 +16,26 @@ import { getLikes } from '../store/song';
 
 function LikeButton({ songId }) {
 
+    const UNLIKED_COLOR = 'black.500';
+    const LIKED_COLOR = 'red.500';
+
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user?.id);
-    const userLikes = useSelector(state => state.session.user?.Likes);
+    const isLiked = useSelector(state => state.session.user?.Likes.find(like => like.song_id === songId));
 
-    const [like, setLike] = useState('black.500');
+    const [like, setLike] = useState(isLiked ? LIKED_COLOR : UNLIKED_COLOR);
     const [numLikes, setNumLikes] = useState(null);
 
     useEffect(() => {
-        const likedSong = userLikes?.find(like => like.song_id === songId);
-        if (likedSong) {
-            setLike('red.500');
-        }
         (async () => {
             const likes = await dispatch(getLikes(songId));
 
             setNumLikes(likes);
         })();
-    }, [dispatch, songId, userLikes]);
+    }, [dispatch, songId]);
 
     const handleLike = async () => {
-        if (like === 'red.500') {
+        if (like === LIKED_COLOR) {
             await dispatch(unlikeSong(userId, songId));
         } else {
             await dispatch(likeSong(userId, songId));
@@ -44,7 +43,7 @@ function LikeButton({ songId }) {
         const likes = await dispatch(getLikes(songId));
 
         setNumLikes(likes);
-        setLike(like === 'red.500' ? 'black.500' : 'red.500');
+        setLike(like === LIKED_COLOR ? UNLIKED_COLOR : LIKED_COLOR);
     }
 
     return (
@@ -54,11 +53,11 @@ function LikeButton({ songId }) {
                     icon={<FaHeart />}
                     isRound
                     size='sm'
-                    color={userId ? like : 'black.500'}
+                    color={userId ? like : UNLIKED_COLOR}
                     fontSize='15px'
                     onClick={handleLike}
                 />
-                <Box color={userId ? like : 'black.500'}>
+                <Box color={userId ? like : UNLIKED_COLOR}>
                     {numLikes}
                 </Box>
             </HStack>

@@ -11,7 +11,6 @@ import {
 
 import CreateAccountButton from './CreateAccountButton';
 
-import FollowButton from './#TempFollowButton';
 
 function Hero() {
   return (
@@ -38,7 +37,6 @@ function Hero() {
         <GridItem rowSpan={1} colSpan={6}>
           <Center>
             <Text fontSize='3xl' mt={6}> What's next in movies is first on SoundTrack </Text>
-            <FollowButton profileUserId={4} />
           </Center>
         </GridItem>
         <GridItem rowSpan={1} colSpan={2} />
