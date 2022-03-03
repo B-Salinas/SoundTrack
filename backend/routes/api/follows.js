@@ -43,9 +43,11 @@ router.delete('/', requireAndVerifyAuth, asyncHandler(async (req, res) => {
   const { followedUserId } = req.body;
 
   try {
-    const followedUser = await Follow.create({
-      user_id: userId,
-      followed_user_id: followedUserId
+    const followedUser = await Follow.findOne({
+      where: {
+        user_id: userId,
+        followed_user_id: followedUserId
+      }
     });
 
     await followedUser.destroy();

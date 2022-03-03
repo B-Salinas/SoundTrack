@@ -30,7 +30,7 @@ function FeaturedSongs() {
             // example code to display songs dynamically:
             featuredSongs.map((song) => {
               return (
-                <SongCard song={song} />
+                <SongCard song={song} key={song.id} />
               )
             })
           }
