@@ -14,8 +14,6 @@ import {
 
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
-import './stylesheets/Footer.css';
-
 function Footer() {
   // return (
   //   <div className="footer">
@@ -28,7 +26,7 @@ function Footer() {
   //     <div className="copyright">
   //       © 2021
   //     </div>
-      
+
   //   </div>
   // )
 

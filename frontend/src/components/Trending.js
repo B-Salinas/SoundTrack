@@ -1,17 +1,15 @@
 import React from 'react';
 
-import { 
+import {
   Button,
   Center,
   Flex,
   Grid,
   GridItem,
   Text
- } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 
 import FeaturedSongs from './FeaturedSongs';
-
-import './stylesheets/Trending.css';
 
 function Trending() {
   return (
@@ -38,7 +36,7 @@ function Trending() {
             </Button>
           </Center>
         </GridItem>
-        <GridItem rowSpan={1} colSpan={5}/>
+        <GridItem rowSpan={1} colSpan={5} />
       </Grid>
     </>
   );
