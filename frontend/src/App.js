@@ -12,13 +12,6 @@ import Explore from "./components/Explore";
 import Footer from './components/Footer';
 
 
-import SongCollection from './components/SongCollection';
-
-
-
-
-
-
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -27,8 +20,9 @@ function App() {
   }, [dispatch]);
 
   return (
+
     <>
-      {/* <Navigation isLoaded={isLoaded} /> */}
+  
       <Navbar />
       {isLoaded && (
         <Switch>
@@ -39,6 +33,7 @@ function App() {
         </Switch>
       )}
       <Footer />
+      
     </>
   );
 }

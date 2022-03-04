@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 import {
   Box,
-  Button,
   Center,
   Grid,
   GridItem,

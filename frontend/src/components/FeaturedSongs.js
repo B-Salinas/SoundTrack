@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -18,8 +18,6 @@ function FeaturedSongs() {
     dispatch(getFeaturedSongs());
   }, [dispatch]);
 
-
-
   return (
 
     <>
@@ -27,7 +25,6 @@ function FeaturedSongs() {
       <Container maxW='container.xl' centerContent >
         <HStack>
           {featuredSongs &&
-            // example code to display songs dynamically:
             featuredSongs.map((song) => {
               return (
                 <SongCard song={song} key={song.id} />

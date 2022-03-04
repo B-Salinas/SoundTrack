@@ -1,3 +1,12 @@
 import React from 'react';
 
-function 
+function SongPage() {
+
+    return (
+        <>
+        
+        </>
+    )
+}
+
+export default SongPage;

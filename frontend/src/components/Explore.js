@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 import { 
-    Container,
-    Grid, 
-    GridItem,
-    HStack,
-    VStack
+  Container,
+  Grid, 
+  GridItem,
+  Wrap,
+  WrapItem
 } from '@chakra-ui/react'
 
 import { getSongs } from '../store/song';
+
 import SongCard from './SongCard';
 
 function Explore() {
@@ -22,30 +23,31 @@ function Explore() {
     }, [dispatch]);
 
     return (
-        <>
-            <Grid templateColumns='repeat(12, 5fr)' templateRows='repeat(12, 5fr)' gap={2}>
-                <GridItem rowSpan={12} colSpan={1} bg='red' />
-                <GridItem rowSpan={1} colSpan={10} bg='green' />
-                <GridItem rowSpan={12} colSpan={1} bg='red' />
-                    {allSongs.length > 0 &&
-                        allSongs.map((song) => {
-                            return (
-                                <>
-                                    <GridItem rowSpan={3} colSpan={2} bg='blue'>
-                                        <Container maxW='md' bg='green'>
-                                            <SongCard song={song} />
-                                        </Container> 
-                                    </GridItem>
-                                </>
-                            )
-                        })
-                    }
-                <GridItem rowSpan={1} colSpan={1} bg='green' />
-                <GridItem rowSpan={1} colSpan={8} bg='green' />
-                <GridItem w='100%' h='20' bg='green' />
-            </Grid>
-        </>
+      <>
+        <Grid templateColumns='repeat(12, 1fr)' gap={2}>
+          <GridItem rowSpan={12} colSpan={1} />
+          <GridItem rowSpan={1} colSpan={10} w='100%' h='10' />
+          <GridItem rowSpan={12} colSpan={1} />
+          <GridItem rowSpan={10} colSpan={10} >
+            <Wrap justify='center'>
+              {allSongs.length > 0 &&
+                allSongs.map((song) => {
+                  return (
+                    <>
+                      <WrapItem maxW='xs'>
+                        <SongCard song={song} />
+                      </WrapItem>
+                    </>
+                  )
+                })
+              }
+            </Wrap>
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={10} w='100%' h='10' />             
+        </Grid>
+      </>
     )
 }
 
 export default Explore;
+
