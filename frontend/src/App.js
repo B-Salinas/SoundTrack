@@ -11,6 +11,9 @@ import Discover from './components/Discover';
 import Explore from "./components/Explore";
 import Footer from './components/Footer';
 
+import SongPage from "./components/SongPage";
+import ExtendedSongCard from "./components/ExtendedSongCard";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +33,7 @@ function App() {
           <Route path="/login" component={LoginForm} />
           <Route path="/signup" component={SignupForm} />
           <Route path="/explore" component={Explore} />
+          <Route path='/:username/:album/:song_title' component={SongPage} />
         </Switch>
       )}
       <Footer />

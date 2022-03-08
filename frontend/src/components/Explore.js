@@ -26,7 +26,7 @@ function Explore() {
       <>
         <Grid templateColumns='repeat(12, 1fr)' gap={2}>
           <GridItem rowSpan={12} colSpan={1} />
-          <GridItem rowSpan={1} colSpan={10} w='100%' h='10' />
+          <GridItem rowSpan={1} colSpan={10} w='100%' h='10'/>
           <GridItem rowSpan={12} colSpan={1} />
           <GridItem rowSpan={10} colSpan={10} >
             <Wrap justify='center'>
