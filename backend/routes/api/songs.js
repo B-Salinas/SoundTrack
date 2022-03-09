@@ -16,10 +16,24 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 // GET A SPECIFIC SONG
-router.get('/:id', asyncHandler(async function (req, res) {
-  const song = await Song.findByPk(req.params.id, {
-    include: [Like, Comment]
-  });
+router.get('/:data', asyncHandler(async function (req, res) {
+  const { songId, songTitle, albumId } = req.query;
+  let song;
+
+  if (songId) {
+    song = await Song.findByPk(parseInt(songId, 10), {
+      include: [Like, Comment]
+    });
+  } else {
+    song = await Song.findOne({
+      where: {
+        song_title: songTitle,
+        album_id: albumId,
+      },
+      include: [Like, Comment]
+    });
+  }
+
   return res.json(song);
 }));
 
