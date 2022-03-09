@@ -2,7 +2,8 @@ import React from 'react';
 import {
   IconButton
 } from '@chakra-ui/react'
-import { BsPlayCircle } from 'react-icons/bs';
+
+import { AiFillPlayCircle } from 'react-icons/ai';
 
 function PlayButton() {
 
@@ -15,7 +16,7 @@ function PlayButton() {
   // FIGURE OUT BUTTON COLOR
   return (
     <>
-      <IconButton icon={<BsPlayCircle />} size='lg' fontSize='35px' mt={4} />
+      <IconButton icon={<AiFillPlayCircle />} p={2} size='lg' fontSize='35px' color='orange.400' isRound />
     </>
   )
 };

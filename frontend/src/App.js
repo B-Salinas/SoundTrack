@@ -32,7 +32,7 @@ function App() {
           <Route path='/' exact component={Discover} /> 
           <Route path="/login" component={LoginForm} />
           <Route path="/signup" component={SignupForm} />
-          <Route path="/explore" component={Explore} />
+          <Route path="/explore" component={SongPage} />
           <Route path='/:username/:album/:song_title' component={SongPage} />
         </Switch>
       )}

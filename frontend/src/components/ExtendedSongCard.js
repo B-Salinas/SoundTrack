@@ -5,8 +5,8 @@ import {
   Container,
   HStack,
   Image,
-  LinkBox,
-  LinkOverlay
+  VStack,
+  Wrap
 } from '@chakra-ui/react';
 
 import PlayButton from './PlayButton';
@@ -14,29 +14,29 @@ import PlayButton from './PlayButton';
 function ExtendedSongCard({ song }) {
   return (
     <>
-      <Container minW='lg' borderWidth='2px' borderRadius='xl' overflow='hidden'>
-        <Box >
+      <Container maxW='container.xl' borderWidth='2px' borderRadius='xl' bg='orange.100' >
+        <Box minW='lg' w='50%' mt={4} bg='green.100'>
           <HStack display='flex' alignItems='baseline'>
-            <Box >
+            <Box>
               <PlayButton />
             </Box>
-            <Box borderWidth='1px'>
-              <Box fontWeight='semibold' as='h4' lineHeight='tight' ml={0} mr='auto'>
-                {song.song_title}
+            <Box p={4}>
+              <Box fontWeight='bold' as='h1' fontSize='3xl' lineHeight='tight' >
+                Red Lotus Theme
               </Box>
-              <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
-                {song.Album.album_title}
+              <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='md' textTransform='uppercase'>
+                Legend of Korra
               </Box>
             </Box>
           </HStack>
           <Box display='flex' mt='4' justifyContent='start' justifyItems='stretch'>
-            <audio controls src={song.audio_url}>
+            <audio controls src='https://res.cloudinary.com/soundtrack-2/video/upload/v1619803494/audio/red-lotus-theme_mznatf.mp3'>
               <source></source>
             </audio>
           </Box>
         </Box>
-        <Box mt={4}>
-          <Image w='100%' h='100%' borderRadius='xl' src={song.img_url} alt={song.song_title}/>
+        <Box maxW='xs' mt={4} bg='red.100'>
+          <Image w='100%' h='100%' borderRadius='xl' src='https://images-na.ssl-images-amazon.com/images/I/71sgqKo8%2BaL._SL1500_.jpg' alt='https://images-na.ssl-images-amazon.com/images/I/71sgqKo8%2BaL._SL1500_.jpg'/>
         </Box>
       </Container>
     </>

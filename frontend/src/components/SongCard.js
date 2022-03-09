@@ -15,8 +15,7 @@ function SongCard({song}) {
 
     return (
       <>
-        
-          <Container minW='xs' borderWidth='2px' borderRadius='xl' overflow='hidden' >
+        <Container minW='xs' borderWidth='2px' borderRadius='xl' overflow='hidden' >
           <LinkBox maxW='xs' >
             <Box mt={4}>
               <Image w='100%' h='100%' borderRadius='xl' src={song.img_url} alt={song.song_title} />
