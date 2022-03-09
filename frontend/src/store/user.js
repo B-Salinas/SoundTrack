@@ -8,11 +8,18 @@ const loadUser = (user) => ({
 });
 
 
-export const getUser = (viewingUserId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/users/${viewingUserId}`);
+export const getUser = (userData) => async (dispatch) => {
+  const urlParam = ['parameters?'];
+  const { userId, username } = userData;
+
+  if (userId) urlParam.push(`userId=${userId}`);
+  if (username) urlParam.push(`username=${username}`);
+
+  const response = await csrfFetch(`/api/users/${urlParam.join('')}`);
 
   if (response.ok) {
     const user = await response.json();
+    console.log(user)
     dispatch(loadUser(user));
   }
 };

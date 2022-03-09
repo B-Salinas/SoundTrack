@@ -75,8 +75,16 @@ export const getFeaturedSongs = () => async (dispatch) => {
   }
 };
 
-export const getSong = (songId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/songs/${songId}`);
+export const getSong = (songData) => async (dispatch) => {
+  const urlParam = ['parameters?'];
+  const { songId, songTitle, albumId } = songData;
+
+  // build the url parameters
+  if (songId) urlParam.push(`songId=${songId}`);  // <--- no need for '&' b/c the data passed here is either 'songId' OR 'songTitle' AND 'albumId'
+  if (songTitle) urlParam.push(`songTitle=${songTitle}&`);
+  if (albumId) urlParam.push(`albumId=${albumId}`);
+
+  const response = await csrfFetch(`/api/songs/${urlParam.join('')}`);
 
   if (response.ok) {
     const song = await response.json();

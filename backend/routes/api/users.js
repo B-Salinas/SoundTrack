@@ -49,11 +49,22 @@ router.post('', validateSignup, asyncHandler(async (req, res) => {
 );
 
 // get a user 
-router.get("/:id", asyncHandler((async (req, res) => {
-  let user_id = parseInt(req.params.id, 10);
-  let user = await User.findByPk(user_id, {
-    include: [Like, Comment, Album, { model: Follow, as: 'Followers' }, { model: Follow, as: 'Following' }]
-  });
+router.get("/:data", asyncHandler((async (req, res) => {
+  const { userId, username } = req.query;
+  let user;
+
+  if (userId) {
+    user = await User.findByPk(parseInt(userId, 10), {
+      include: [Like, Comment, Album, { model: Follow, as: 'Followers' }, { model: Follow, as: 'Following' }]
+    });
+  } else {
+    user = await User.findOne({
+      where: {
+        username
+      },
+      include: [Like, Comment, Album, { model: Follow, as: 'Followers' }, { model: Follow, as: 'Following' }]
+    });
+  }
 
   return res.json(user);
 })));
