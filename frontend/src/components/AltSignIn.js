@@ -9,9 +9,8 @@ import {
   Text,
  } from '@chakra-ui/react'
 
-import LogInButton from './LogInButton';
-import CreateAccountButton from './CreateAccountButton';
-
+import LogInButton from './Buttons/LogInButton.js';
+import CreateAccountButton from './Buttons/CreateAccountButton.js';
 
 function AltSignIn() {
 

@@ -4,12 +4,10 @@ import {
   Box,
   Container,
   HStack,
-  Image,
-  VStack,
-  Wrap
+  Image
 } from '@chakra-ui/react';
 
-import PlayButton from './PlayButton';
+import PlayButton from './Buttons/PlayButton.js';
 
 function ExtendedSongCard({ song }) {
   return (

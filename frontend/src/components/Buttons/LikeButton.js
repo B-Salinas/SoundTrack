@@ -10,8 +10,8 @@ import {
 
 import { FaHeart } from 'react-icons/fa'
 
-import { likeSong, unlikeSong } from '../store/session';
-import { getLikes } from '../store/song';
+import { likeSong, unlikeSong } from '../../store/session';
+import { getLikes } from '../../store/song';
 
 
 function LikeButton({ songId }) {

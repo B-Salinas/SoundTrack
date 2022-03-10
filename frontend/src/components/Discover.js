@@ -12,7 +12,6 @@ function Discover() {
   return (
 
     <>
-
       <Box>
         <Box>
           <Hero />

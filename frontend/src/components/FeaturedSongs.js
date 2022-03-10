@@ -13,7 +13,6 @@ function FeaturedSongs() {
   const dispatch = useDispatch();
   const featuredSongs = useSelector(state => state.songs.featuredSongs);
 
-
   useEffect(() => {
     dispatch(getFeaturedSongs());
   }, [dispatch]);

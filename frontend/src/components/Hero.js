@@ -8,8 +8,7 @@ import {
   Text
 } from '@chakra-ui/react'
 
-import CreateAccountButton from './CreateAccountButton';
-
+import CreateAccountButton from './Buttons/CreateAccountButton.js';
 
 function Hero() {
   return (
@@ -20,7 +19,6 @@ function Hero() {
         <GridItem rowSpan={1} colSpan={10} />
         <GridItem rowSpan={5} colSpan={1} />
         <GridItem rowSpan={1} colSpan={2} />
-
         <GridItem rowSpan={1} colSpan={6}>
           <Center>
             <Text fontSize='3xl' mt={6}> What's next in movies is first on SoundTrack </Text>

@@ -6,14 +6,10 @@ import {
 import { AiFillPlayCircle } from 'react-icons/ai';
 
 function PlayButton() {
-
   // const PLAYING_COLOR = 'orange';
   // const NOT_PLAYING_COLOR = 'gray';
 
   // const handlePlay = async () => {};
-
-
-  // FIGURE OUT BUTTON COLOR
   return (
     <>
       <IconButton icon={<AiFillPlayCircle />} p={2} size='lg' fontSize='35px' color='orange.400' isRound />

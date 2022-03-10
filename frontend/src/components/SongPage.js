@@ -15,15 +15,12 @@ function SongPage() {
   const dispatch = useDispatch();
   const { username, album, song_title } = useParams();
   const userAlbums = useSelector(state => state.users.userProfile?.Albums);
-  // const featuredSongs = useSelector(state => state.songs.featuredSongs);
-  console.log(username, album, song_title);
 
   useEffect(() => {
     (async () => {
       if (!userAlbums) {
         await dispatch(getUser({ username }));
       }
-
       const userAlbum = userAlbums?.find((ele) => ele.album_title === album);
 
       await dispatch(getSong({ songTitle: song_title, albumId: userAlbum?.id }));
@@ -39,23 +36,9 @@ function SongPage() {
         <GridItem rowSpan={6} colSpan={10} bg='blue.500'>
           <ExtendedSongCard />
         </GridItem>
-
       </Grid>
     </>
   )
 }
 
 export default SongPage;
-
-// <Container maxW='container.xl' centerContent >
-//   <HStack>
-//     {featuredSongs &&
-//               featuredSongs.map((song) => {
-//                 return (
-//                   <ExtendedSongCard song={song} key={song.id} />
-//                 )
-//               })
-//             }
-//     Hello, we are on the song page!!
-//   </HStack>
-// </Container>

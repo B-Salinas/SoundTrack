@@ -9,7 +9,7 @@ import {
     LinkOverlay
 } from '@chakra-ui/react'
 
-import LikeButton from './LikeButton';
+import LikeButton from './Buttons/LikeButton';
 
 function SongCard({song}) {
 

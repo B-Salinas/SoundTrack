@@ -7,8 +7,7 @@ import {
 } from '@chakra-ui/react';
 
 import { FaUserPlus, FaUserFriends } from 'react-icons/fa';
-
-import { followUser, unfollowUser } from '../store/session';
+import { followUser, unfollowUser } from '../../store/session';
 
 function FollowButton({ profileUserId }) {
 
@@ -35,10 +34,8 @@ function FollowButton({ profileUserId }) {
     if (!userId || follow === UNFOLLOWED_COLOR) {
       return <FaUserPlus />
     }
-
     return <FaUserFriends />;
   }
-
 
   return (
     <>

@@ -12,9 +12,9 @@ import {
 
 import { FaSoundcloud } from 'react-icons/fa';
 
-import LogInButton from './LogInButton';
-import LogOutButton from './LogOutButton';
-import CreateAccountButton from './CreateAccountButton';
+import LogInButton from './Buttons/LogInButton.js';
+import LogOutButton from './Buttons/LogOutButton.js';
+import CreateAccountButton from './Buttons/CreateAccountButton.js';
 
 // import NavbarAuth from './NavbarAuth';
 // import NavbarUnauth from './NavbarUnauth';
