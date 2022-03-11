@@ -17,15 +17,27 @@ function SongPage() {
   const dispatch = useDispatch();
   const { username, album, song_title } = useParams();
   const userAlbums = useSelector(state => state.users.userProfile?.Albums);
+  const currentSong = useSelector(state => state.songs.currentSong);
 
   useEffect(() => {
     (async () => {
-      if (!userAlbums) {
-        await dispatch(getUser({ username }));
-      }
-      const userAlbum = userAlbums?.find((ele) => ele.album_title === album);
+      if (!username) {
+        // REMOVE THIS BLOCK AFTER TESTING
+        if (!userAlbums) {
+          await dispatch(getUser({ username: 'Zuckerman-J' }));
+        } else {
+          await dispatch(getSong({ songTitle: 'Red Lotus Theme', albumId: 13 }));
+        }
+      } else {
+        // KEEP THIS BLOCK AFTER TESTING
+        if (!userAlbums) {
+          await dispatch(getUser({ username }));
+        } else {
+          const userAlbum = userAlbums?.find((ele) => ele.album_title === album);
 
-      await dispatch(getSong({ songTitle: song_title, albumId: userAlbum?.id }));
+          await dispatch(getSong({ songTitle: song_title, albumId: userAlbum?.id }));
+        }
+      }
     })();
   }, [dispatch, username, album, song_title, userAlbums]);
 
@@ -34,6 +46,7 @@ function SongPage() {
       <Grid templateColumns='repeat(12, 1fr)'  gap={2}>
         <GridItem rowSpan={12} colSpan={1} bg='red' />
         {/* <GridItem rowSpan={1} colSpan={10} bg='green.500' /> */}
+<<<<<<< HEAD
         <GridItem rowSpan={6} colSpan={10} bg='blue.100' >
           <ExtendedSongCard />
           <Divider />
@@ -43,6 +56,16 @@ function SongPage() {
           <CommentSection />
         </GridItem>
         
+=======
+        <GridItem rowSpan={6} colSpan={10}>
+          {/* this is to make sure "currentSong" is loaded before passing it in "ExtendedSongCard" */}
+          {currentSong &&
+            <ExtendedSongCard song={currentSong} />
+          }
+          <Divider />
+        </GridItem>
+        <GridItem rowSpan={12} colSpan={1} />
+>>>>>>> e3011d5db87158ca9271273a0b5e494f4bc91da0
       </Grid>
     </>
   )
