@@ -1,20 +1,28 @@
 import React from 'react';
+
 import {
-  IconButton
-} from '@chakra-ui/react'
+  Flex,
+  IconButton,
+} from '@chakra-ui/react';
 
 import { AiFillPlayCircle } from 'react-icons/ai';
 
-function PlayButton() {
-  // const PLAYING_COLOR = 'orange';
-  // const NOT_PLAYING_COLOR = 'gray';
-
-  // const handlePlay = async () => {};
+function PlayButton () {
+  
   return (
     <>
-      <IconButton icon={<AiFillPlayCircle />} p={2} size='lg' fontSize='35px' color='orange.400' isRound />
+      <Flex justify='center' mt={4}>
+        <IconButton
+          icon={<AiFillPlayCircle />}
+          size='lg'
+          fontSize='45px'
+          color='orange.500'
+          variant='ghost'
+          isRound
+        />
+      </Flex>
     </>
   )
-};
+}
 
 export default PlayButton;

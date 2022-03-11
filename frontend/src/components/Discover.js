@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { 
-  Box 
+  Box,
+  Divider
 } from '@chakra-ui/react'
 
 import Hero from './Hero';
@@ -16,6 +17,7 @@ function Discover() {
         <Box>
           <Hero />
         </Box>
+        <Divider />
         <Box>
           <Trending />
         </Box>

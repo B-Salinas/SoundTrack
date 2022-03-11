@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import {
+  Divider,
   Grid,
   GridItem
 } from '@chakra-ui/react'
@@ -30,12 +31,14 @@ function SongPage() {
   return (
     <>
       <Grid templateColumns='repeat(12, 1fr)' templateRows='repeat(12, 1fr)' gap={2}>
-        <GridItem rowSpan={12} colSpan={1} bg='red.500' />
-        <GridItem rowSpan={1} colSpan={10} h='20' bg='green.500' />
-        <GridItem rowSpan={12} colSpan={1} bg='red.500' />
-        <GridItem rowSpan={6} colSpan={10} bg='blue.500'>
+        <GridItem rowSpan={12} colSpan={1} />
+        {/* <GridItem rowSpan={1} colSpan={10} bg='green.500' /> */}
+        <GridItem rowSpan={6} colSpan={10}>
           <ExtendedSongCard />
+          <Divider />
         </GridItem>
+        <GridItem rowSpan={12} colSpan={1}  />
+        
       </Grid>
     </>
   )
