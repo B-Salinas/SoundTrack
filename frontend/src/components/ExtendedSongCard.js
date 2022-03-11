@@ -11,7 +11,9 @@ import {
 
 import PlayButton from './Buttons/PlayButton.js';
 
-function ExtendedSongCard({ song }) {
+function ExtendedSongCard(props) {
+  const { song } = props;
+
   return (
     <>
       <Container maxW='container.xl' >
@@ -23,22 +25,22 @@ function ExtendedSongCard({ song }) {
               </Box>
               <Box p={4}>
                 <Box fontWeight='bold' as='h1' fontSize='3xl' lineHeight='tight' >
-                  Red Lotus Theme
+                  {song.Album.album_title}
                 </Box>
                 <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='md' textTransform='uppercase'>
-                  Legend of Korra
+                  {song.song_title}
                 </Box>
               </Box>
             </HStack>
             <Box display='flex' mt={4} justifyContent='start' justifyItems='stretch'>
-              <audio controls src='https://res.cloudinary.com/soundtrack-2/video/upload/v1619803494/audio/red-lotus-theme_mznatf.mp3'>
+              <audio controls src={song.audio_url}>
                 <source></source>
               </audio>
             </Box>
           </Box>
           <Spacer />
           <Box maxW='md'>
-            <Image w='100%' h='100%' borderRadius='xl' src='https://images-na.ssl-images-amazon.com/images/I/71sgqKo8%2BaL._SL1500_.jpg' alt='https://images-na.ssl-images-amazon.com/images/I/71sgqKo8%2BaL._SL1500_.jpg' />
+            <Image w='100%' h='100%' borderRadius='xl' src={song.Album.img_url} alt={song.Album.img_url} />
           </Box>
         </Flex>
       </Container>
