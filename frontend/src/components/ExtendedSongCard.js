@@ -16,12 +16,12 @@ function ExtendedSongCard({ song }) {
     <>
       <Container maxW='container.xl' >
         <Flex justify='center' p={6}>
-          <Box minW='lg' w='50%' >
-            <HStack display='flex'>
+          <Box minW='lg' w='50%'>
+            <Flex align='center'>
               <Box w={20} h={20} >
                 <PlayButton />
               </Box>
-              <Box p={4}>
+              <Box p={4} >
                 <Box fontWeight='bold' as='h1' fontSize='3xl' lineHeight='tight' >
                   Red Lotus Theme
                 </Box>
@@ -29,8 +29,8 @@ function ExtendedSongCard({ song }) {
                   Legend of Korra
                 </Box>
               </Box>
-            </HStack>
-            <Box display='flex' mt={4} justifyContent='start' justifyItems='stretch'>
+            </Flex>
+            <Box >
               <audio controls src='https://res.cloudinary.com/soundtrack-2/video/upload/v1619803494/audio/red-lotus-theme_mznatf.mp3'>
                 <source></source>
               </audio>

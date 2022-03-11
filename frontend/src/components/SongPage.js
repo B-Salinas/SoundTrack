@@ -11,6 +11,7 @@ import {
 import { getSong } from '../store/song';
 import { getUser } from '../store/user';
 import ExtendedSongCard from './ExtendedSongCard';
+import CommentSection from './CommentSection';
 
 function SongPage() {
   const dispatch = useDispatch();
@@ -30,14 +31,17 @@ function SongPage() {
 
   return (
     <>
-      <Grid templateColumns='repeat(12, 1fr)' templateRows='repeat(12, 1fr)' gap={2}>
-        <GridItem rowSpan={12} colSpan={1} />
+      <Grid templateColumns='repeat(12, 1fr)'  gap={2}>
+        <GridItem rowSpan={12} colSpan={1} bg='red' />
         {/* <GridItem rowSpan={1} colSpan={10} bg='green.500' /> */}
-        <GridItem rowSpan={6} colSpan={10}>
+        <GridItem rowSpan={6} colSpan={10} bg='blue.100' >
           <ExtendedSongCard />
           <Divider />
         </GridItem>
-        <GridItem rowSpan={12} colSpan={1}  />
+        <GridItem rowSpan={12} colSpan={1} bg='red' />
+        <GridItem rowSpan={6} colSpan={10} bg='blue.100'>
+          <CommentSection />
+        </GridItem>
         
       </Grid>
     </>
