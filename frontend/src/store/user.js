@@ -19,7 +19,7 @@ export const getUser = (userData) => async (dispatch) => {
 
   if (response.ok) {
     const user = await response.json();
-    console.log(user)
+
     dispatch(loadUser(user));
   }
 };

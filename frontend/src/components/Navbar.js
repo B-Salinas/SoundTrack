@@ -21,8 +21,6 @@ import CreateAccountButton from './Buttons/CreateAccountButton.js';
 
 function Navbar() {
   const sessionUser = useSelector(state => state.session.user);
-  console.log(sessionUser);
-  console.log(sessionUser?.username);
 
 
   return (

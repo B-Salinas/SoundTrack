@@ -22,7 +22,7 @@ router.get('/:data', asyncHandler(async function (req, res) {
 
   if (songId) {
     song = await Song.findByPk(parseInt(songId, 10), {
-      include: [Like, Comment]
+      include: [Like, Comment, Album]
     });
   } else {
     song = await Song.findOne({
@@ -30,7 +30,7 @@ router.get('/:data', asyncHandler(async function (req, res) {
         song_title: songTitle,
         album_id: albumId,
       },
-      include: [Like, Comment]
+      include: [Like, Comment, Album]
     });
   }
 
