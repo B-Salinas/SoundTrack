@@ -185,7 +185,7 @@ const songsReducer = (state = initialState, action) => {
       return newState;
     case ADD_COMMENT:
       newState = Object.assign({}, state);
-      newState.currentSong.Comments.push(action.comment);
+      newState.currentSong.Comments.unshift(action.comment);
       return newState;
     case REMOVE_COMMENT:
       newState = Object.assign({}, state);

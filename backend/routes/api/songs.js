@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { Song, Album, Like, Comment } = require('../../db/models');
+const { Song, Album, Like, Comment, User } = require('../../db/models');
 // TODO: IMPORT BACKEND AUTHENTICATION MIDDLEWARE 'requireAuth' FOR 
 // USER FOR SENSITIVE API ROUTES (POST / PATCH / DELETE)
 
@@ -22,7 +22,14 @@ router.get('/:data', asyncHandler(async function (req, res) {
 
   if (songId) {
     song = await Song.findByPk(parseInt(songId, 10), {
-      include: [Like, Comment, Album]
+      include: [
+        Like,
+        Album,
+        {
+          model: Comment,
+          include: [User]
+        }
+      ]
     });
   } else {
     song = await Song.findOne({
@@ -30,7 +37,14 @@ router.get('/:data', asyncHandler(async function (req, res) {
         song_title: songTitle,
         album_id: albumId,
       },
-      include: [Like, Comment, Album]
+      include: [
+        Like,
+        Album,
+        {
+          model: Comment,
+          include: [User]
+        }
+      ]
     });
   }
 

@@ -2,7 +2,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { Comment } = require('../../db/models');
+const { Comment, User } = require('../../db/models');
 const { requireAndVerifyAuth } = require('../../utils/auth');
 
 // TODO: CREATE IMPORT
@@ -29,10 +29,14 @@ router.post('/', requireAndVerifyAuth, asyncHandler(async (req, res) => {
   const { songId, content } = req.body;
 
   try {
-    const comment = await Comment.create({
+    const newComment = await Comment.create({
       user_id: userId,
       song_id: songId,
       content
+    });
+
+    const comment = await Comment.findByPk(newComment.id, {
+      include: [User]
     });
 
     return res.json(comment);
