@@ -16,9 +16,6 @@ import LogInButton from './Buttons/LogInButton.js';
 import LogOutButton from './Buttons/LogOutButton.js';
 import CreateAccountButton from './Buttons/CreateAccountButton.js';
 
-// import NavbarAuth from './NavbarAuth';
-// import NavbarUnauth from './NavbarUnauth';
-
 function Navbar() {
   const sessionUser = useSelector(state => state.session.user);
 
@@ -47,7 +44,6 @@ function Navbar() {
           <GridItem w='100%' h='20' />
           <GridItem w='100%' h='20' />
           <GridItem w='100%' h='20' />
-          {/* I have to incorporate that terinary symbol so it knows we are logged in */}
           <GridItem w='100%' h='20'>
             <Center>
               {sessionUser ? null : <LogInButton />}
@@ -55,7 +51,6 @@ function Navbar() {
           </GridItem>
           <GridItem w='100%' h='20'>
             {sessionUser ? <LogOutButton /> : <CreateAccountButton size={'sm'} mt={6} />}
-
           </GridItem>
           <GridItem w='100%' h='20' />
         </Grid>

@@ -4,7 +4,6 @@ import {
   Box,
   Container,
   Flex,
-  HStack,
   Image,
   Spacer
 } from '@chakra-ui/react';

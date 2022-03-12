@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 
 import SongPage from "./components/SongPage";
 import ExtendedSongCard from "./components/ExtendedSongCard";
+import ProfilePage from "./components/ProfilePage";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           {/* <Route path="/login" component={LoginForm} />
           <Route path="/signup" component={SignupForm} /> */}
           <Route path="/explore" component={Explore} />
+          <Route path='/profile' component={ProfilePage} />
           <Route path='/:username/:album/:song_title' component={SongPage} />
         </Switch>
       )}
