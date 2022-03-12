@@ -54,7 +54,9 @@ function SongPage() {
         </GridItem>
         <GridItem rowSpan={12} colSpan={1} />
         <GridItem rowSpan={6} colSpan={10} bg='blue.100'>
-          <CommentSection />
+          {currentSong &&
+            <CommentSection />
+          }
         </GridItem>
       </Grid>
     </>
@@ -62,5 +64,3 @@ function SongPage() {
 }
 
 export default SongPage;
-
-

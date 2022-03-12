@@ -11,9 +11,7 @@ import {
 
 import PlayButton from './Buttons/PlayButton.js';
 
-function ExtendedSongCard(props) {
-  const { song } = props;
-
+function ExtendedSongCard({ song }) {
   return (
     <>
       <Container maxW='container.xl' >
