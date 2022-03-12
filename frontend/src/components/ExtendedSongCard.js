@@ -31,15 +31,9 @@ function ExtendedSongCard(props) {
                   {song.song_title}
                 </Box>
               </Box>
-<<<<<<< HEAD
             </Flex>
             <Box >
-              <audio controls src='https://res.cloudinary.com/soundtrack-2/video/upload/v1619803494/audio/red-lotus-theme_mznatf.mp3'>
-=======
-            </HStack>
-            <Box display='flex' mt={4} justifyContent='start' justifyItems='stretch'>
               <audio controls src={song.audio_url}>
->>>>>>> e3011d5db87158ca9271273a0b5e494f4bc91da0
                 <source></source>
               </audio>
             </Box>

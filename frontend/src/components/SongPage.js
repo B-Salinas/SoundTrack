@@ -43,20 +43,8 @@ function SongPage() {
 
   return (
     <>
-      <Grid templateColumns='repeat(12, 1fr)'  gap={2}>
-        <GridItem rowSpan={12} colSpan={1} bg='red' />
-        {/* <GridItem rowSpan={1} colSpan={10} bg='green.500' /> */}
-<<<<<<< HEAD
-        <GridItem rowSpan={6} colSpan={10} bg='blue.100' >
-          <ExtendedSongCard />
-          <Divider />
-        </GridItem>
-        <GridItem rowSpan={12} colSpan={1} bg='red' />
-        <GridItem rowSpan={6} colSpan={10} bg='blue.100'>
-          <CommentSection />
-        </GridItem>
-        
-=======
+      <Grid templateColumns='repeat(12, 1fr)' templateRows='repeat(12, 1fr)' gap={2}>
+        <GridItem rowSpan={12} colSpan={1} />
         <GridItem rowSpan={6} colSpan={10}>
           {/* this is to make sure "currentSong" is loaded before passing it in "ExtendedSongCard" */}
           {currentSong &&
@@ -65,10 +53,14 @@ function SongPage() {
           <Divider />
         </GridItem>
         <GridItem rowSpan={12} colSpan={1} />
->>>>>>> e3011d5db87158ca9271273a0b5e494f4bc91da0
+        <GridItem rowSpan={6} colSpan={10} bg='blue.100'>
+          <CommentSection />
+        </GridItem>
       </Grid>
     </>
   )
 }
 
 export default SongPage;
+
+
