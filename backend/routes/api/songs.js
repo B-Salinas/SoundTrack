@@ -11,7 +11,16 @@ const router = express.Router();
 
 // GET ALL SONGS
 router.get('/', asyncHandler(async (req, res) => {
-  const songs = await Song.findAll({ include: [Album, Like, Comment] });
+  const songs = await Song.findAll({
+    include: [
+      {
+        model: Album,
+        include: [User]
+      },
+      Like,
+      Comment
+    ]
+  });
   return res.json(songs);
 }));
 
