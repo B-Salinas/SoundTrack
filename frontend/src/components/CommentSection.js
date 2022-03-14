@@ -18,6 +18,7 @@ function CommentSection() {
   const [content, setContent] = useState('');
 
   const handleSubmit = async () => {
+    console.log('heeeeerrreee')
     await dispatch(postComment(userId, songId, content));
     setContent('');
   }
