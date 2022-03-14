@@ -5,8 +5,8 @@ import {
     Container,
     HStack,
     Image,
-    LinkBox, 
-    LinkOverlay
+    Link,
+    LinkBox
 } from '@chakra-ui/react'
 
 import LikeButton from './Buttons/LikeButton';
@@ -18,9 +18,9 @@ function SongCard({song}) {
         <Container minW='xs' borderWidth='2px' borderRadius='xl' overflow='hidden' >
           <LinkBox maxW='xs' >
             <Box mt={4}>
-              <LinkOverlay href='#'>
+              <Link href='#'>
                 <Image w='100%' h='100%' borderRadius='xl' src={song.img_url} alt={song.song_title} />
-              </LinkOverlay>
+              </Link>
             </Box>
             <Box mt='4' mb='4' ml='1'>
               <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase' >

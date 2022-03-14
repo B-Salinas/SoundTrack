@@ -11,7 +11,7 @@ function PlayButton () {
   
   return (
     <>
-      <Flex justify='center' mt={4}>
+      <Flex justify='center' >
         <IconButton
           icon={<AiFillPlayCircle />}
           size='lg'

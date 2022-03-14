@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  Box,
   Divider,
   Grid,
-  GridItem
+  GridItem,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react';
 
 import { getSongs } from '../store/song';
@@ -22,17 +23,26 @@ function ProfilePage() {
 
   return (
     <>
-      <Grid templateColumns='repeat(12, 1fr)' templateRows='repeat(48, 1fr)' gap={2}>
-        <GridItem rowSpan={24} colSpan={1} bg='red'/>
-        <GridItem rowSpan={8} colSpan={10}>
+      <Grid templateColumns='repeat(12, 1fr)' gap={2}>
+        <GridItem rowSpan={24} colSpan={1} />
+        <GridItem  colSpan={10} >
           <ProfileHeader />
           <Divider />
         </GridItem>
-        <GridItem rowSpan={24} colSpan={1} bg='red'/>
+        <GridItem rowSpan={24} colSpan={1} />
         <GridItem rowSpan={16} colSpan={7} >
-          <Box borderWidth='2px' borderRadius='xl'>
-            <MiniSongCard />
-          </Box>
+          <Wrap>
+            {allSongs.length > 0 && 
+              allSongs.map((song) => {
+                return (
+                  <>
+                    <WrapItem >
+                      <MiniSongCard song={song} />
+                   </WrapItem>
+                  </>
+                )
+              })}
+          </Wrap>
         </GridItem>
         <GridItem rowSpan={8} colSpan={3} bg='green' />
         <GridItem rowSpan={8} colSpan={3} bg='green' />
