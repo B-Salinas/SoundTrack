@@ -35,6 +35,7 @@ function App() {
           <Route path="/signup" component={SignupForm} /> */}
           <Route path="/explore" component={Explore} />
           <Route path='/profile' component={ProfilePage} />
+          <Route path='/songpage' component={SongPage} />
           <Route path='/:username/:album/:song_title' component={SongPage} />
         </Switch>
       )}

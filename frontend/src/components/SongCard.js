@@ -11,6 +11,7 @@ import {
 
 import LikeButton from './Buttons/LikeButton';
 
+// how do i use useParams to grab the information to build the link to the individual song page???
 function SongCard({song}) {
 
     return (
@@ -18,7 +19,7 @@ function SongCard({song}) {
         <Container minW='xs' borderWidth='2px' borderRadius='xl' overflow='hidden' >
           <LinkBox maxW='xs' >
             <Box mt={4}>
-              <Link href='#'>
+              <Link href='/:username/:album/:song_title'>
                 <Image w='100%' h='100%' borderRadius='xl' src={song.img_url} alt={song.song_title} />
               </Link>
             </Box>
