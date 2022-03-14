@@ -2,16 +2,21 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
+  Avatar,
   Box,
   FormControl,
-  Input
+  Input,
+  Stack
 } from '@chakra-ui/react';
+
+import Comments from './Comments';
 
 import { postComment, deleteComment } from '../store/song';
 
 
-function CommentSection() {
+function CommentSection({comment}) {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
   const userId = useSelector(state => state.session.user?.id);
   const songId = useSelector(state => state.songs.currentSong?.id);
   const comments = useSelector(state => state.songs.currentSong?.Comments);
@@ -33,6 +38,7 @@ function CommentSection() {
         <FormControl>
           <Input
             placeholder='Add a comment...'
+            variant='outline'
             value={content}
             onChange={(e) => setContent(e.target.value)}
             onKeyPress={(e) => {
@@ -42,23 +48,18 @@ function CommentSection() {
             }}
           />
         </FormControl>
-        {
-          comments.map((comment) => {
-            return (
-              <div key={comment.id}>
-                <div>
-                  {comment.User.username}
-                </div>
-                <div>
-                  {new Date(comment.updatedAt).toDateString()}
-                </div>
-                <div>
-                  {comment.content}
-                </div>
-              </div>
-            )
-          })
-        }
+        <Stack >
+          {comments.map((comment) => {
+              return (
+                <>
+                  <Box>
+                    <Comments comments={comment} />
+                  </Box>
+                </>
+              )
+            })
+          }
+        </Stack>
       </Box>
     </>
   )

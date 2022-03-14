@@ -10,14 +10,13 @@ import {
 
 import PlayButton from './Buttons/PlayButton';
 
-// how do i use useParams to grab the information to build the link to the individual song page???
 function MiniSongCard({song}) {
   return (
     <>
       <Box maxW='xl' >
-        <Flex >
+        <Flex>
           <Box m={4} >
-            <Link href='/:username/:album/:song_title'>
+            <Link href={`/${song.Album.User.username}/${song.Album.album_title}/${song.song_title}`}>
               <Image w='100%' h='100%' borderRadius='xl' src={song.img_url} alt={song.song_title} />
             </Link>
           </Box>
