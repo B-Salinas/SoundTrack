@@ -24,6 +24,25 @@ router.get('/', asyncHandler(async (req, res) => {
   return res.json(songs);
 }));
 
+router.get('/:userId/songs', asyncHandler(async (req, res) => {
+  const { userId } = req.params;
+  const albums = await Album.findAll({
+    where: {
+      user_id: userId,
+    },
+    include: [
+      {
+        model: Song,
+        include: {
+          model: Album,
+          include: [User]
+        }
+      }
+    ] 
+  });
+  return res.json(albums);
+}));
+
 // GET A SPECIFIC SONG
 router.get('/:data', asyncHandler(async function (req, res) {
   const { songId, songTitle, albumId } = req.query;

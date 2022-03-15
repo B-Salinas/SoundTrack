@@ -10,7 +10,6 @@ import {
   Heading,
   Icon,
   Link,
-  Text,
 } from '@chakra-ui/react'
 
 import { FaSoundcloud } from 'react-icons/fa';
@@ -21,6 +20,7 @@ import CreateAccountButton from './Buttons/CreateAccountButton.js';
 
 function Navbar() {
   const sessionUser = useSelector(state => state.session.user);
+
 
 
   return (
@@ -36,7 +36,7 @@ function Navbar() {
               </Link>
             </Center>
           </GridItem>
-          <GridItem w='100%' h='20'>
+          <GridItem w='100%' h='20' >
             <Heading size='sm' mt={8}>
               <Center>
                 <Link href={sessionUser ? '/explore' : '/'}>
@@ -49,21 +49,35 @@ function Navbar() {
           <GridItem w='100%' h='20' />
           <GridItem w='100%' h='20' />
           <GridItem w='100%' h='20' />
-          <GridItem w='100%' h='20' />
-          <GridItem w='100%' h='20' >
+          <GridItem rowSpan={1} colSpan={2} >
             <Center>
-              {sessionUser ? `Welcome ${sessionUser.username}!` : null }
+              {sessionUser ? 
+                <Box mt={8} fontWeight='bold' fontStyle='italic' letterSpacing='widest' fontSize='xs' textTransform='uppercase' >
+                  Welcome {sessionUser.username}!
+                </Box>
+              : null }
             </Center>
+          </GridItem>
+          <GridItem w='100%' h='20' >
+            {sessionUser ? 
+              <Box m={4} align='center'>
+                <Link href={`/${sessionUser.username}`}>
+                  <Avatar size='md' src={sessionUser.profilePic} name={sessionUser.username} />
+                </Link>
+              </Box>
+               : 
+              <Box align='center' >
+                <LogInButton size={'sm'} mt={6} />
+              </Box>
+            }
           </GridItem>
           <GridItem w='100%' h='20'>
             {sessionUser ? 
-              <Link href='/profile'>
-                <Avatar size='md' src={sessionUser.profilePic} name={sessionUser.username} />
-              </Link>
-               : <LogInButton />}
-          </GridItem>
-          <GridItem w='100%' h='20'>
-            {sessionUser ? <LogOutButton /> : <CreateAccountButton size={'sm'} mt={6} />}
+              <Box align='center'>
+                <LogOutButton size={'sm'} mt={6} /> 
+              </Box>
+              : 
+              <CreateAccountButton size={'sm'} mt={6} />}
           </GridItem>
           <GridItem w='100%' h='20'/>
         </Grid>

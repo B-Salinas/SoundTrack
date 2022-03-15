@@ -8,7 +8,7 @@ import {
 
 import { logout } from '../../store/session';
 
-function LogOutButton() {
+function LogOutButton({ size, mt }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -19,7 +19,7 @@ function LogOutButton() {
     
   return (
     <>
-      <Button onClick={handleLogout} size='sm' mt={6} colorScheme='red' >
+      <Button onClick={handleLogout} size={size} mt={mt} colorScheme='red' >
         Log Out
       </Button>
     </>

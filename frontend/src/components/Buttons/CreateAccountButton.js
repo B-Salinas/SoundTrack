@@ -62,7 +62,7 @@ function CreateAccountButton({size, mt}) {
   return (
     <>
       <Button onClick={onOpen} size={size} mt={mt} colorScheme={'orange'} >
-        Create an Account
+        Create Account
       </Button>
 
       <Modal

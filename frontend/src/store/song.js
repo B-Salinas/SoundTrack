@@ -65,6 +65,23 @@ export const getSongs = () => async (dispatch) => {
   }
 };
 
+export const getSongsFromUser = (userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/songs/${userId}/songs`);
+  
+  if (response.ok) {
+    const albums = await response.json();
+    const songs = [];
+    console.log('before!!!')
+    albums.forEach((alb) => {
+      songs.push(...alb.Songs);
+    });
+    console.log('after!!!!');
+    console.log(songs);
+    console.log(albums);
+    dispatch(load(songs));
+  }
+};
+
 // TEMP THUNK?
 export const getFeaturedSongs = () => async (dispatch) => {
   const response = await csrfFetch('/api/songs');

@@ -22,7 +22,7 @@ import {
     useDisclosure,
 } from '@chakra-ui/react'
 
-function LogInButton() {
+function LogInButton({ size, mt }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -51,7 +51,7 @@ function LogInButton() {
 
     return (
       <>
-        <Button onClick={onOpen} size='sm' mt={6} colorScheme='black' variant='outline' >
+        <Button onClick={onOpen} size={size} mt={mt} colorScheme='black' variant='outline' >
           Log In
         </Button>
 

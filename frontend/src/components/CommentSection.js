@@ -2,21 +2,19 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  Avatar,
   Box,
   FormControl,
+  FormLabel,
   Input,
-  Stack
+  SimpleGrid,
 } from '@chakra-ui/react';
 
 import Comments from './Comments';
-
 import { postComment, deleteComment } from '../store/song';
 
 
-function CommentSection({comment}) {
+function CommentSection() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
   const userId = useSelector(state => state.session.user?.id);
   const songId = useSelector(state => state.songs.currentSong?.id);
   const comments = useSelector(state => state.songs.currentSong?.Comments);
@@ -34,32 +32,39 @@ function CommentSection({comment}) {
 
   return (
     <>
-      <Box>
-        <FormControl>
-          <Input
-            placeholder='Add a comment...'
-            variant='outline'
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                handleSubmit();
-              }
-            }}
-          />
-        </FormControl>
-        <Stack >
-          {comments.map((comment) => {
+      <Box p={6} >
+        <Box>
+          <FormControl>
+            <FormLabel> {comments?.length} Comments </FormLabel>
+            <Input
+              borderWidth='2px' 
+              borderRadius='2xl'
+              placeholder='Add a comment...'
+              variant='outline'
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  handleSubmit();
+                }
+              }}
+            />
+          </FormControl>
+        </Box>
+        <Box>
+          <SimpleGrid columns={1}  >
+            {comments.length > 0 && 
+              comments.map((comment) => {
               return (
                 <>
-                  <Box>
-                    <Comments comments={comment} />
+                  <Box p={2}>
+                    <Comments comment={comment} />
                   </Box>
                 </>
               )
-            })
-          }
-        </Stack>
+            })}
+          </SimpleGrid>
+        </Box>
       </Box>
     </>
   )

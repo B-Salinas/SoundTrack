@@ -1,40 +1,37 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-
 
 import {
   Avatar,
   Box,
+  Flex,
+  Link,
+  HStack,
 } from '@chakra-ui/react';
 
 function Comments({comment}) {
-  const sessionUser = useSelector(state => state.session.user);
-  const comments = useSelector(state => state.songs.currentSong?.Comments);
-
-  // key = { comment.id }
+ 
   return (
     <>
-      <Box maxW='xl'>
-        <Box>
-          <Avatar size='md' src={sessionUser.profilePic} name={sessionUser.username} />
+      <Flex >
+        <Box p={2} >
+          <Link href={`/${comment.User.username}`}>
+            <Avatar size='md' src={comment.User.profilePic} name={comment.User.username} />
+          </Link>
         </Box>
-        <Box>
-          <Box>
-            <Box>
-              {/* {comment.User.username} */}
-              Username goes here
+        <Box m={2}>
+          <HStack>
+            <Box fontWeight='bold' as='h1' fontSize='sm' lineHeight='tight'>
+              {comment.User.username}
             </Box>
-            <Box>
-              {/* {new Date(comment.updatedAt).toDateString()} */}
-              Date and Time goes here
+            <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
+              {new Date(comment.updatedAt).toDateString()}
             </Box>
-          </Box>
+          </HStack>
           <Box>
-            {/* {comment.content} */}
-            Comment goes here
+            {comment.content}
           </Box>
         </Box>
-      </Box>
+      </Flex>
     </>
   )
 }

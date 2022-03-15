@@ -18,6 +18,7 @@ function SongPage() {
   const { username, album, song_title } = useParams();
   const userAlbums = useSelector(state => state.users.userProfile?.Albums);
   const currentSong = useSelector(state => state.songs.currentSong);
+  const commentLength = useSelector(state => state.songs.currentSong?.Comments.length);
 
   useEffect(() => {
     (async () => {
@@ -43,9 +44,9 @@ function SongPage() {
 
   return (
     <>
-      <Grid templateColumns='repeat(12, 1fr)' templateRows='repeat(12, 1fr)' gap={2}>
-        <GridItem rowSpan={12} colSpan={1} />
-        <GridItem rowSpan={6} colSpan={10}>
+      <Grid templateColumns='repeat(12, 1fr)' gap={2}>
+        <GridItem rowSpan={12} colSpan={1}  />
+        <GridItem rowSpan={6} colSpan={10} >
           {/* this is to make sure "currentSong" is loaded before passing it in "ExtendedSongCard" */}
           {currentSong &&
             <ExtendedSongCard song={currentSong} />
@@ -53,7 +54,7 @@ function SongPage() {
           <Divider />
         </GridItem>
         <GridItem rowSpan={12} colSpan={1} />
-        <GridItem rowSpan={6} colSpan={10} bg='blue.100'>
+        <GridItem rowSpan={10} colSpan={10} bg='gray.100'>
           {currentSong &&
             <CommentSection />
           }
