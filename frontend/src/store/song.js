@@ -25,7 +25,7 @@ const loadOne = (song) => ({
 const loadFeatured = (songs) => ({
   type: LOAD_FEATURED,
   songs
-})
+});
 
 const upload = (song) => ({
   type: UPLOAD,
@@ -66,18 +66,14 @@ export const getSongs = () => async (dispatch) => {
 };
 
 export const getSongsFromUser = (userId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/songs/${userId}/songs`);
-  
+  const response = await csrfFetch(`/api/songs/user/${userId}`);
+
   if (response.ok) {
     const albums = await response.json();
     const songs = [];
-    console.log('before!!!')
     albums.forEach((alb) => {
       songs.push(...alb.Songs);
     });
-    console.log('after!!!!');
-    console.log(songs);
-    console.log(albums);
     dispatch(load(songs));
   }
 };
