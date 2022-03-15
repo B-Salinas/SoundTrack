@@ -21,7 +21,6 @@ function CommentSection() {
   const [content, setContent] = useState('');
 
   const handleSubmit = async () => {
-    console.log('heeeeerrreee')
     await dispatch(postComment(userId, songId, content));
     setContent('');
   }
@@ -37,7 +36,7 @@ function CommentSection() {
           <FormControl>
             <FormLabel> {comments?.length} Comments </FormLabel>
             <Input
-              borderWidth='2px' 
+              borderWidth='2px'
               borderRadius='2xl'
               placeholder='Add a comment...'
               variant='outline'
@@ -53,16 +52,16 @@ function CommentSection() {
         </Box>
         <Box>
           <SimpleGrid columns={1}  >
-            {comments.length > 0 && 
+            {comments.length > 0 &&
               comments.map((comment) => {
-              return (
-                <>
-                  <Box p={2}>
-                    <Comments comment={comment} />
-                  </Box>
-                </>
-              )
-            })}
+                return (
+                  <>
+                    <Box p={2}>
+                      <Comments comment={comment} />
+                    </Box>
+                  </>
+                )
+              })}
           </SimpleGrid>
         </Box>
       </Box>

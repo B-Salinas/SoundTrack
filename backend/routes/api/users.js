@@ -68,14 +68,12 @@ router.get("/parameters?", asyncHandler((async (req, res) => {
       model: Album,
       separate: true,
       order: [['id', 'DESC']],
-      limit: 3
     },
     {
       model: Follow,
       as: 'Followers',
       separate: true,
-      order: [['id', 'DESC']],
-      limit: 3
+      order: [['id', 'DESC']]
     },
     {
       model: Follow,
@@ -117,6 +115,18 @@ router.get("/parameters?", asyncHandler((async (req, res) => {
     ]
   });
 
+  const userFollowers = await User.findAll({
+    where: {
+      id: user.Followers.map(user => user.user_id)
+    },
+    include: [
+      {
+        model: Follow,
+        as: 'Followers'
+      }
+    ]
+  });
+
   const parsedUser = {
     id: user.id,
     username: user.username,
@@ -149,7 +159,18 @@ router.get("/parameters?", asyncHandler((async (req, res) => {
         profilePic: user.profilePic,
         numFollowers: user.Followers.length
       }
-    })
+    }),
+    followers: {
+      followCount: user.Followers.length,
+      users: userFollowers.map(user => {
+        return {
+          id: user.id,
+          username: user.username,
+          profilePic: user.profilePic,
+          numFollowers: user.Followers.length
+        }
+      })
+    }
   };
 
   return res.json(parsedUser);
