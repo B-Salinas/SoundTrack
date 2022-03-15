@@ -24,7 +24,8 @@ router.get('/', asyncHandler(async (req, res) => {
   return res.json(songs);
 }));
 
-router.get('/:userId/songs', asyncHandler(async (req, res) => {
+// GET ALL SONGS FROM A USER
+router.get('/user/:userId', asyncHandler(async (req, res) => {
   const { userId } = req.params;
   const albums = await Album.findAll({
     where: {
@@ -38,41 +39,39 @@ router.get('/:userId/songs', asyncHandler(async (req, res) => {
           include: [User]
         }
       }
-    ] 
+    ]
   });
   return res.json(albums);
 }));
 
 // GET A SPECIFIC SONG
-router.get('/:data', asyncHandler(async function (req, res) {
+router.get('/parameters?', asyncHandler(async function (req, res) {
   const { songId, songTitle, albumId } = req.query;
+  const includeArgs = [
+    Album,
+    {
+      model: Like,
+      separate: true,
+      order: [['id', 'ASC']]
+    },
+    {
+      model: Comment,
+      include: [User],
+      separate: true,
+      order: [['id', 'ASC']]
+    }
+  ];
   let song;
 
   if (songId) {
-    song = await Song.findByPk(parseInt(songId, 10), {
-      include: [
-        Like,
-        Album,
-        {
-          model: Comment,
-          include: [User]
-        }
-      ]
-    });
+    song = await Song.findByPk(parseInt(songId, 10), { include: includeArgs });
   } else {
     song = await Song.findOne({
       where: {
         song_title: songTitle,
         album_id: albumId,
       },
-      include: [
-        Like,
-        Album,
-        {
-          model: Comment,
-          include: [User]
-        }
-      ]
+      include: includeArgs
     });
   }
 
