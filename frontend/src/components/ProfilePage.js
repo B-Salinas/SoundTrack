@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-
 import {
+  Box,
+  Container,
   Divider,
   Grid,
   GridItem,
+  Heading,
   Wrap,
   WrapItem,
 } from '@chakra-ui/react';
@@ -16,6 +18,10 @@ import { getUser } from '../store/user';
 import { getSongsFromUser } from '../store/song';
 import ProfileHeader from './ProfileHeader';
 import MiniSongCard from './MiniSongCard';
+
+import LikesOnProfile from './LikesOnProfile';
+import FollowingOnProfile from './FollowingOnProfile';
+import CommentsOnProfile from './CommentsOnProfile';
 
 function ProfilePage() {
   const { username } = useParams();
@@ -39,66 +45,71 @@ function ProfilePage() {
   return (
     <>
       <Grid templateColumns='repeat(12, 1fr)' gap={2}>
-        <GridItem rowSpan={24} colSpan={1} />
-        <GridItem colSpan={10} >
+        <GridItem rowSpan={24} colSpan={1} bg='red' />
+        <GridItem colSpan={10} bg='lightyellow'>
           {currentProfile &&
             <ProfileHeader currentProfile={currentProfile} />
           }
           <Divider />
         </GridItem>
-        <GridItem rowSpan={24} colSpan={1} />
-        <GridItem rowSpan={allSongs?.length} colSpan={7} >
-          <Wrap>
-            {allSongs.length > 0 &&
-              allSongs.map((song) => {
-                return (
-                  <WrapItem key={song.id} >
-                    <MiniSongCard song={song} />
-                  </WrapItem>
-                )
-              })}
-          </Wrap>
+        <GridItem rowSpan={24} colSpan={1} bg='red' />
+        <GridItem rowSpan={allSongs?.length} colSpan={6} bg='lightgreen' >
+          <Container maxW='container.md'>
+            <Wrap >
+              {allSongs.length > 0 &&
+                allSongs.map((song) => {
+                  return (
+                    <WrapItem key={song.id} >
+                      <MiniSongCard song={song} />
+                    </WrapItem>
+                  )
+                })}
+            </Wrap>
+          </Container>
         </GridItem>
-        <GridItem rowSpan={8} colSpan={3} bg='green' >
-          <Wrap>
-            {currentLikes &&
-              currentLikes.map((like) => {
-                return (
-                  <WrapItem key={like.id}>
-                    <div>{like.album_title}</div>
-                    <div>{like.song_title}</div>
-                    <div>{`# likes: ${like.numLikes}`}</div>
-                    <div>{`# comments: ${like.numComments}`}</div>
-                  </WrapItem>
-                )
-              })}
-          </Wrap>
-          <Wrap>
+        <GridItem rowSpan={1} colSpan={4} bg='lightblue' >
+          <Divider />
+          <Box>
+            <Heading p={2} > {currentFollowing?.length} Following </Heading>
+          </Box>
+          <Box overflowY='scroll' borderWidth='1px'>
             {currentFollowing &&
               currentFollowing.map((following) => {
                 return (
-                  <WrapItem key={following.id}>
-                    <img src={following.profilePic} alt='' />
-                    <div>{following.username}</div>
-                    <div>{`# followers: ${following.numFollowers}`}</div>
-                  </WrapItem>
+                  <FollowingOnProfile following={following} />
                 )
               })}
-          </Wrap>
-          <Wrap>
+          </Box>
+        </GridItem>
+        <GridItem rowSpan={2} colSpan={4} bg='pink' >
+            <Box>
+              <Heading> {currentLikes?.length} Likes </Heading>
+            </Box>
+          <Box maxH='xs' overflowY='scroll' borderWidth='1px'>
+            {currentLikes &&
+              currentLikes.map((like) => {
+                return (
+                  <LikesOnProfile like={like} />
+                )
+              })}
+            </Box>
+        </GridItem>
+        <GridItem rowSpan={4} colSpan={4} bg='lightgreen'>
+            <Divider />
+            <Box>
+              <Heading p={2}> {currentComments?.length} Comments </Heading>
+            </Box>
+            <Box maxH='md' overflowY='scroll' borderWidth='1px'> 
             {currentComments &&
               currentComments.map((comment) => {
                 return (
-                  <WrapItem key={comment.id}>
-                    <div>{`on ${comment.song_title}`}</div>
-                    <div>{new Date(comment.updatedAt).toDateString()}</div>
-                    <div>{comment.content}</div>
-                  </WrapItem>
+                  <>
+                    <CommentsOnProfile comment={comment} />
+                  </>
                 )
               })}
-          </Wrap>
+            </Box>
         </GridItem>
-        <GridItem rowSpan={8} colSpan={3} bg='green' />
       </Grid>
     </>
   )

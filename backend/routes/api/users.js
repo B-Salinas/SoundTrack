@@ -55,14 +55,12 @@ router.get("/parameters?", asyncHandler((async (req, res) => {
     {
       model: Like,
       separate: true,
-      order: [['id', 'DESC']],
-      limit: 3
+      order: [['id', 'DESC']]
     },
     {
       model: Comment,
       include: [Song],
-      order: [['id', 'DESC']],
-      limit: 3
+      order: [['id', 'DESC']]
     },
     {
       model: Album,
@@ -79,8 +77,7 @@ router.get("/parameters?", asyncHandler((async (req, res) => {
       model: Follow,
       as: 'Following',
       separate: true,
-      order: [['id', 'DESC']],
-      limit: 3
+      order: [['id', 'DESC']]
     }
   ];
   let user;
