@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import {
   Box,
@@ -8,8 +7,9 @@ import {
   Image
 } from '@chakra-ui/react';
 
+import FollowActions from './FollowActions';
+
 function ProfileHeader({ currentProfile }) {
-  const sessionUser = useSelector(state => state.session.user);
 
   return (
     <>
@@ -24,6 +24,9 @@ function ProfileHeader({ currentProfile }) {
             </Box>
             <Box ml={4} color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='md' textTransform='uppercase' >
               User since {new Date(currentProfile.createdAt).toDateString()}
+            </Box>
+            <Box ml={4} mt={2} >
+              <FollowActions profileUserId={currentProfile?.id} />
             </Box>
           </Box>
         </Flex>

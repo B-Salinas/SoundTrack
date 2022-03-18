@@ -1,4 +1,5 @@
 import { csrfFetch } from './csrf';
+import { followUserCount, unfollowUserCount } from './user'
 
 // just variables 
 const SET_USER = 'session/setUser';
@@ -139,6 +140,7 @@ export const followUser = (userId, followedUserId) => async (dispatch) => {
   if (response.ok) {
     const followedUser = await response.json();
     dispatch(follow(followedUser));
+    dispatch(followUserCount());
   }
 };
 
@@ -154,6 +156,7 @@ export const unfollowUser = (userId, followedUserId) => async (dispatch) => {
   if (response.ok) {
     const followedUserId = await response.json();
     dispatch(unfollow(followedUserId));
+    dispatch(unfollowUserCount());
   }
 };
 

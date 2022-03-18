@@ -3,21 +3,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import {
+  Avatar,
+  Box,
   Divider,
   Grid,
-  GridItem
+  GridItem,
+  Link,
 } from '@chakra-ui/react'
 
 import { getSong } from '../store/song';
 import { getUser } from '../store/user';
 import ExtendedSongCard from './ExtendedSongCard';
 import CommentSection from './CommentSection';
+import ProfileCard from './ProfileCard';
 
 function SongPage() {
   const dispatch = useDispatch();
-  const { username, album, song_title } = useParams();
   const userAlbums = useSelector(state => state.users.userProfile?.Albums);
   const currentSong = useSelector(state => state.songs.currentSong);
+  const userData = useSelector(state => state.users.userProfile);
+  
+  const { username, album, song_title } = useParams();
 
   useEffect(() => {
     (async () => {
@@ -52,8 +58,11 @@ function SongPage() {
           }
           <Divider />
         </GridItem>
-        <GridItem rowSpan={12} colSpan={1} />
-        <GridItem rowSpan={10} colSpan={10} bg='gray.100'>
+        <GridItem rowSpan={12} colSpan={1}  />
+        <GridItem rowSpan={3} colSpan={2} >
+          <ProfileCard userData={userData} />
+        </GridItem>
+        <GridItem rowSpan={10} colSpan={8} bg='gray.100'>
           {currentSong &&
             <CommentSection />
           }

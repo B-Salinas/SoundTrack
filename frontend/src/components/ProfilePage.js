@@ -45,16 +45,19 @@ function ProfilePage() {
   return (
     <>
       <Grid templateColumns='repeat(12, 1fr)' gap={2}>
-        <GridItem rowSpan={24} colSpan={1} bg='red' />
-        <GridItem colSpan={10} bg='lightyellow'>
+        <GridItem rowSpan={24} colSpan={1} />
+        <GridItem colSpan={10}>
           {currentProfile &&
             <ProfileHeader currentProfile={currentProfile} />
           }
           <Divider />
         </GridItem>
-        <GridItem rowSpan={24} colSpan={1} bg='red' />
-        <GridItem rowSpan={allSongs?.length} colSpan={6} bg='lightgreen' >
+        <GridItem rowSpan={24} colSpan={1} />
+        <GridItem rowSpan={allSongs?.length > 8 ? allSongs?.length : 8} colSpan={6} >
           <Container maxW='container.md'>
+            <Box p={2}>
+              <Heading> {allSongs?.length} Songs </Heading>
+            </Box>
             <Wrap >
               {allSongs.length > 0 &&
                 allSongs.map((song) => {
@@ -67,10 +70,9 @@ function ProfilePage() {
             </Wrap>
           </Container>
         </GridItem>
-        <GridItem rowSpan={1} colSpan={4} bg='lightblue' >
-          <Divider />
+        <GridItem rowSpan={1} colSpan={4} >
           <Box>
-            <Heading p={2} > {currentFollowing?.length} Following </Heading>
+            <Heading p={2}> {currentFollowing?.length} Following </Heading>
           </Box>
           <Box overflowY='scroll' borderWidth='1px'>
             {currentFollowing &&
@@ -81,7 +83,8 @@ function ProfilePage() {
               })}
           </Box>
         </GridItem>
-        <GridItem rowSpan={2} colSpan={4} bg='pink' >
+        <GridItem rowSpan={2} colSpan={4}>
+          <Divider />
             <Box>
               <Heading> {currentLikes?.length} Likes </Heading>
             </Box>
@@ -94,7 +97,7 @@ function ProfilePage() {
               })}
             </Box>
         </GridItem>
-        <GridItem rowSpan={4} colSpan={4} bg='lightgreen'>
+        <GridItem rowSpan={4} colSpan={4} >
             <Divider />
             <Box>
               <Heading p={2}> {currentComments?.length} Comments </Heading>

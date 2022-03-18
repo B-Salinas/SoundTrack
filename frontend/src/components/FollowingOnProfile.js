@@ -9,6 +9,16 @@ import {
 } from '@chakra-ui/react';
 
 function FollowingOnProfile({following}) {
+
+  const followerCount = () => {
+    if (following.numFollowers == 0 || following.numFollowers > 1) {
+      return `${following.numFollowers} Followers`
+    }
+    return `${following.numFollowers} Follower`
+  }
+
+
+
   return (
     <>
       <Flex key={following.id}>
@@ -27,7 +37,7 @@ function FollowingOnProfile({following}) {
             •
           </Box>
           <Box color='gray.500' fontWeight='semibold' letterSpacing='wide' fontSize='xs' textTransform='uppercase'>
-            {`${following.numFollowers} followers`}
+            {followerCount()}
           </Box>
         </HStack>
       </Flex>
